@@ -1,0 +1,39 @@
+html, body, #root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border: 0;
+  min-width: 1366px;
+  min-height: 768px;
+}
+
+.no-touch {
+  user-select: none;
+}
+
+.placeholder {
+  opacity: 0;
+}
+
+//加载页
+.holder {
+  width: 100%;
+  height: 100%;
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .no-data {
+    font-size: 4em;
+    font-weight: bolder;
+    opacity: .5;
+  }
+  .loading {
+    opacity: .5;
+    font-size: 2em;
+  }
+  .label {
+    padding-left: 1em;
+  }
+}

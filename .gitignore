@@ -1,0 +1,7 @@
+node_modules/
+/build/
+/src/styles/themes/
+.idea
+.DS_Store
+.env
+*.log
