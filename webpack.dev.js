@@ -19,7 +19,7 @@ const devServer = {
 };
 
 //配置HTTPS
-const ENABLE_SSL = true;
+const ENABLE_SSL = false;
 if (ENABLE_SSL) {
   Object.assign(devServer, {
     host: 'localhost',

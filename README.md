@@ -3,7 +3,7 @@
 
 ## 包含库/功能
 ### React & React-hot-loader
-- 已使用`npm:@hot-loader/react-dom`替换官方`react-dom`
+- 已使用`@hot-loader/react-dom`替换官方`react-dom`
 - 支持开发模式下`css-hot-loader`css文件热重载
 - 支持官方React.lazy，并封装于`src/utils/hocs/LazyPageWrapper.js`
 

@@ -12,7 +12,9 @@ module.exports = {
     '@babel/preset-react',
   ],
   'plugins': [
+    'react-hot-loader/babel',
     'transform-dev',
+    "dynamic-import-node",
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-syntax-import-meta',
     '@babel/plugin-transform-runtime',
@@ -31,6 +33,5 @@ module.exports = {
     '@babel/plugin-proposal-function-bind',
     ['@babel/plugin-proposal-decorators', { 'legacy': true },],
     ['@babel/plugin-proposal-pipeline-operator', { 'proposal': 'minimal' },],
-    'react-hot-loader/babel',
   ],
 };

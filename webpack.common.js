@@ -11,6 +11,7 @@ const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   entry: {
     app: './src/index.js',
   },
@@ -88,7 +89,7 @@ module.exports = {
       id: 'happy-babel',
       //如何处理  用法和loader 的配置一样
       loaders: [
-        // 'react-hot-loader',
+        'react-hot-loader/webpack',
         'babel-loader?cacheDirectory=true',
       ],
       //共享进程池
@@ -102,6 +103,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': resolveToStaticPath('./src'),
+      'react-dom': '@hot-loader/react-dom',
     },
   },
 };
