@@ -3,7 +3,7 @@
   "sideEffect": false,
   "description": "A react Template",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --progress --open --hot",
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --hot",
     "build": "NODE_ENV=production webpack --progress --colors",
     "test": "jest"
   },
