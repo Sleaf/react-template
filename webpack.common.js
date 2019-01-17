@@ -102,7 +102,6 @@ module.exports = {
   resolve: {
     alias: {
       '@': resolveToStaticPath('./src'),
-      'react-dom': '@hot-loader/react-dom'
     },
   },
 };
