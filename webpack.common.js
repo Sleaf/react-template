@@ -33,7 +33,7 @@ module.exports = {
       {
         test: /\.(c|le)ss$/,
         use: (process.env.NODE_ENV === 'development'
-          ? ['css-hot-loader', MiniCssExtractPlugin.loader]
+          ? ['css-hot-loader', 'style-loader']
           : [MiniCssExtractPlugin.loader])
           .concat([
             'css-loader',
@@ -42,7 +42,7 @@ module.exports = {
           ]),
       },
       {
-        test: /\.(jpg|png)$/,
+        test: /\.(jpg|png|gif|webp)$/,
         loader: 'url-loader',
         options: {
           limit: 1,
@@ -58,7 +58,6 @@ module.exports = {
           size: 16,
           hash: 'sha512',
           digest: 'hex',
-          // 这里不能使用 [chunkhash:8] 因为多主题会执行多次编译！！！
           name: `resources/fonts/[hash].[ext]`,
           publicPath: '/',
         },
@@ -68,6 +67,10 @@ module.exports = {
   plugins: [
     // 复制错误页面
     new CopyWebpackPlugin([{ from: 'src/static', to: 'resources', toType: 'dir' },]),
+    //提取css
+    new MiniCssExtractPlugin({
+      filename: 'resources/css/style.[hash].css',
+    }),
     // 确保 vendors 的 chunkhash 只随内容变化
     // @see https://webpack.js.org/guides/caching/#module-identifiers
     new webpack.HashedModuleIdsPlugin(),
@@ -79,8 +82,6 @@ module.exports = {
       inject: 'body',
       version: `${pkg.version}`,
     }),
-    //tree shaking
-    new WebpackDeepScopeAnalysisPlugin(),
     //parallel build
     new HappyPack({
       //用id来标识 happypack处理那里类文件
@@ -95,10 +96,8 @@ module.exports = {
       //允许 HappyPack 输出日志
       verbose: true,
     }),
-    //提取css
-    new MiniCssExtractPlugin({
-      filename: 'resources/css/style.[hash].css',
-    })
+    //tree shaking
+    new WebpackDeepScopeAnalysisPlugin(),
   ],
   resolve: {
     alias: {

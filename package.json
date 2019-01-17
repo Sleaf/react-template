@@ -3,15 +3,14 @@
   "sideEffect": false,
   "description": "A react Template",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --progress --hot",
+    "dev": "NODE_ENV=development webpack-dev-server --config webpack.dev.js --progress --open --hot",
     "build": "NODE_ENV=production webpack --progress --colors",
     "test": "jest"
   },
   "author": "Sleaf",
   "dependencies": {
-    "@hot-loader/react-dom": "npm:react-dom",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react-dom": "npm:@hot-loader/react-dom",
     "react-hot-loader": "^4.6.3"
   },
   "devDependencies": {

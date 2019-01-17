@@ -10,7 +10,7 @@
 - less
 
 ## 待解决的问题
-- css-hot-loader无法使用
+- ~~css-hot-loader无法使用~~
 
 ## 待添加的功能
 - https自签支持
