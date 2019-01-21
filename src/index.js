@@ -5,6 +5,7 @@ import { setTagTitle, removeElement, removeClass } from '@/utils/domLib';
 import { setConfig } from 'react-hot-loader'
 import '@/styles/index.less';
 import ready from '@/ready';
+import pkg from '../package';
 
 //debug
 if (process.env.NODE_ENV === 'development') {
@@ -25,7 +26,7 @@ ready().then(_ => {
   // 移除 loading 效果
   removeClass(document.getElementById('body'), 'body-loading');
   removeElement(document.getElementById('loading'));
-  setTagTitle('react-template');
+  setTagTitle(pkg.name);//fixme replace to your website name
   //mount react-dom
   ReactDOM.render(<App />, document.getElementById('root'));
 });
