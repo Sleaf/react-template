@@ -1,7 +1,7 @@
-const {join, resolve} = require('path');
+const { join, resolve } = require('path');
 const fs = require('fs');
 const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
+const common = require('./webpack.common');
 
 const devServer = {
   disableHostCheck: true,

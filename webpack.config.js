@@ -5,6 +5,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const common = require('./webpack.common.js');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const args = require('minimist')(process.argv);
 
 module.exports = merge(common, {
   mode: 'production',
@@ -51,6 +52,6 @@ module.exports = merge(common, {
     // 移除 dist 目录
     new CleanWebpackPlugin(['build']),
     // 图形化分析工具
-    // new BundleAnalyzerPlugin(),
+    ...(args.analyze ? [new BundleAnalyzerPlugin()] : []),
   ],
 });
