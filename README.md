@@ -68,6 +68,7 @@ cat localCA.crt >> /etc/pki/tls/certs/ca-bundle.crt
 - less
 - jest
 - cross-env
+- why-did-you-update
 
 ## 待解决的问题
 - ~~css-hot-loader无法使用~~

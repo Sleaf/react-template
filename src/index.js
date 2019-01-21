@@ -6,11 +6,12 @@ import { setConfig } from 'react-hot-loader'
 import '@/styles/index.less';
 import ready from '@/ready';
 
-// //why-did-you-update
-// if (process.env.NODE_ENV !== 'production') {
-//   const { whyDidYouUpdate } = require('why-did-you-update');
-//   whyDidYouUpdate(React);
-// }
+//debug
+if (process.env.NODE_ENV === 'development') {
+  // // why-did-you-update
+  // const { whyDidYouUpdate } = require('why-did-you-update');
+  // whyDidYouUpdate(React);
+}
 
 //hot-reload
 setConfig({
