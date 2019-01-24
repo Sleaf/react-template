@@ -81,9 +81,6 @@
     "why-did-you-update": "^1.0.6"
   },
   "jest": {
-    "transformIgnorePatterns": [
-      "/node_modules/(?!lodash-es).+\\.js$"
-    ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     }
