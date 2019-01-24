@@ -3,6 +3,7 @@
 
 ## 包含库/功能
 ### React & React-hot-loader
+- 带状态的热重载，完美替代HMR
 - 已使用`@hot-loader/react-dom`替换官方`react-dom`
 - 支持开发模式下`css-hot-loader`css文件热重载
 - 支持官方React.lazy，并封装于`src/utils/hocs/LazyPageWrapper.js`
@@ -75,4 +76,6 @@ cat localCA.crt >> /etc/pki/tls/certs/ca-bundle.crt
 
 ## 待添加的功能
 - 多主题方案支持
-- 多预编译器支持（参考vue-cli）
+- 国际化方案支持
+- ~~多预编译器支持（参考vue-cli）~~
+- TypeScript支持

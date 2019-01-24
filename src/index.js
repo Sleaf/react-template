@@ -26,7 +26,7 @@ ready().then(_ => {
   // 移除 loading 效果
   removeClass(document.getElementById('body'), 'body-loading');
   removeElement(document.getElementById('loading'));
-  setTagTitle(pkg.name);//fixme replace to your website name
+  setTagTitle(pkg.name);//fixme: replace to your website name
   //mount react-dom
   ReactDOM.render(<App />, document.getElementById('root'));
 });
