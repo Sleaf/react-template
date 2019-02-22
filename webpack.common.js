@@ -80,7 +80,14 @@ module.exports = {
       filename: 'index.html',
       favicon: 'src/assets/favicon.ico',
       template: 'src/index.html',
-      inject: 'body',
+      inject: true,
+      minify: {
+        collapseInlineTagWhitespace: true,
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true,
+      },
       version: `${pkg.version}`,
     }),
     //parallel build
