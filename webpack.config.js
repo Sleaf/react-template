@@ -37,13 +37,13 @@ module.exports = merge(common, {
         sourceMap: false,
       }),
     ],
-    splitChunks: {
-      chunks: 'all',
-      name: 'vendors',
-    },
-    runtimeChunk: {
-      name: 'runtime',
-    },
+    // splitChunks: {
+    //   chunks: 'all',
+    //   name: 'vendors',
+    // },
+    // runtimeChunk: {
+    //   name: 'runtime',
+    // },
   },
   plugins: [
     // 忽略 moment 语言文件
