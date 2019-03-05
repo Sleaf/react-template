@@ -1,6 +1,7 @@
 const plugins = [
   require('autoprefixer')({
-    browsers: ['> 1%', 'last 2 versions', 'ie >= 9']
+    grid: "autoplace",
+    browsers: ['> 1%', 'last 2 versions', 'ie >= 10'],
   })
 ];
 

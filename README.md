@@ -10,6 +10,7 @@
 
 ### babel &  autoprefixer/postcss
 - babel已配置支持`react-hot-loader`与`jest`
+- 支持grid布局，同时将最低兼容浏览器提升至ie10
 
 ### https自签支持（localhost）
 > - **警告**：工程内的证书秘钥等仅为调用特殊浏览器API提供测试开发，用于生产是**根本不安全**的。
