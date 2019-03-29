@@ -8,7 +8,7 @@ const resolveToStaticPath = relativePath => resolve(__dirname, relativePath);
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 const HappyPack = require('happypack');
 const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length * 2 });
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -43,7 +43,7 @@ module.exports = {
           ]),
       },
       {
-        test: /\.(jpg|png|gif|webp)$/,
+        test: /\.(jpe?g|png|gif|webp)$/,
         loader: 'url-loader',
         options: {
           limit: 1,
@@ -77,6 +77,7 @@ module.exports = {
     new webpack.HashedModuleIdsPlugin(),
     new HtmlwebpackPlugin({
       title: 'Loading...',
+      buildTime: new Date().toLocaleString(),
       filename: 'index.html',
       favicon: 'src/assets/favicon.ico',
       template: 'src/index.html',
