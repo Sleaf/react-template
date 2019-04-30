@@ -2,12 +2,13 @@ const { join, resolve } = require('path');
 const fs = require('fs');
 const merge = require('webpack-merge');
 const common = require('./webpack.common');
+const __isWindows__ = process.platform === 'win32';
 
 const devServer = {
   disableHostCheck: true,
   historyApiFallback: true,
   compress: true,
-  host: process.platform === 'win32' ? 'localhost' : '0.0.0.0',
+  host: __isWindows__ ? 'localhost' : '0.0.0.0',
   port: process.env.PORT || 3000,
   proxy: {
     '/api': {

@@ -50,7 +50,7 @@ module.exports = merge(common, {
     // @see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack#using-ignoreplugin
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // 移除 dist 目录
-    new CleanWebpackPlugin(['build']),
+    new CleanWebpackPlugin(),
     // 图形化分析工具
     ...(args.analyze ? [new BundleAnalyzerPlugin()] : []),
   ],

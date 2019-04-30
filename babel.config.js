@@ -1,37 +1,40 @@
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 module.exports = {
-  'env': {
-    'test': {
-      'presets': [
-        ['@babel/preset-env'],
-        '@babel/preset-react',
-      ],
-    },
-  },
   'presets': [
     ['@babel/preset-env', { 'modules': false }],
+    "@babel/typescript",
     '@babel/preset-react',
   ],
   'plugins': [
-    'react-hot-loader/babel',
-    'transform-dev',
-    "dynamic-import-node",
-    '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-syntax-import-meta',
+    // prepaer
     '@babel/plugin-transform-runtime',
-    '@babel/plugin-transform-proto-to-assign',
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-json-strings',
-    '@babel/plugin-proposal-function-sent',
-    '@babel/plugin-proposal-export-namespace-from',
-    '@babel/plugin-proposal-numeric-separator',
-    '@babel/plugin-proposal-throw-expressions',
-    '@babel/plugin-proposal-export-default-from',
-    '@babel/plugin-proposal-logical-assignment-operators',
-    '@babel/plugin-proposal-optional-chaining',
-    '@babel/plugin-proposal-nullish-coalescing-operator',
-    '@babel/plugin-proposal-do-expressions',
-    '@babel/plugin-proposal-function-bind',
-    ['@babel/plugin-proposal-decorators', { 'legacy': true },],
-    ['@babel/plugin-proposal-pipeline-operator', { 'proposal': 'minimal' },],
+    // new ForkTsCheckerWebpackPlugin(),
+    /* follow https://github.com/babel/proposals */
+    // Stage 0
+    "@babel/plugin-proposal-function-bind",
+    // Stage 1
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-proposal-logical-assignment-operators",
+    "@babel/plugin-proposal-optional-chaining",
+    ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal" }],
+    ["@babel/plugin-proposal-nullish-coalescing-operator", { "loose": false }],
+    "@babel/plugin-proposal-do-expressions",
+    // Stage 2
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/plugin-proposal-function-sent",
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-numeric-separator",
+    "@babel/plugin-proposal-throw-expressions",
+    // Stage 3
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-syntax-import-meta",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-json-strings",
+    // Others
+    'react-directive', // use directive like Vue
+    'lodash', // A simple transform to cherry-pick Lodash modules so you don’t have to.
+    // Hot Reload
+    'react-hot-loader/babel',
   ],
 };

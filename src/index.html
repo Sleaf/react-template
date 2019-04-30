@@ -1,28 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="build-time" content="<%= htmlWebpackPlugin.options.buildTime %>">
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+  <meta name='build-time' content='<%= htmlWebpackPlugin.options.buildTime %>'>
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <style>
+    body.body-loading {
+      background: #999999;
+    }
+
+    .sk-cube-grid {
+      width: 40px;
+      height: 40px;
+      top: 50%;
+      position: absolute;
+      left: 50%;
+      margin-top: -20px;
+      margin-left: -20px;
+    }
+
+    .sk-cube-grid .sk-cube {
+      width: 33%;
+      height: 33%;
+      background-color: #ffffff;
+      float: left;
+      animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+    }
+
+    .sk-cube-grid .sk-cube1 {
+      animation-delay: .2s;
+    }
+
+    .sk-cube-grid .sk-cube2 {
+      animation-delay: .3s;
+    }
+
+    .sk-cube-grid .sk-cube3 {
+      animation-delay: .4s;
+    }
+
+    .sk-cube-grid .sk-cube4 {
+      animation-delay: .1s;
+    }
+
+    .sk-cube-grid .sk-cube5 {
+      animation-delay: .2s;
+    }
+
+    .sk-cube-grid .sk-cube6 {
+      animation-delay: .3s;
+    }
+
+    .sk-cube-grid .sk-cube7 {
+      animation-delay: 0s;
+    }
+
+    .sk-cube-grid .sk-cube8 {
+      animation-delay: .1s;
+    }
+
+    .sk-cube-grid .sk-cube9 {
+      animation-delay: .2s;
+    }
+
+    @keyframes sk-cubeGridScaleDelay {
+      0%,
+      100%,
+      70% {
+        transform: scale3D(1, 1, 1);
+      }
+      35% {
+        transform: scale3D(0, 0, 1);
+      }
+    }
+  </style>
 </head>
 <!--VERSION: <%=  htmlWebpackPlugin.options.version  %>-->
 <!--PUBLISH DATE: <%=  htmlWebpackPlugin.options.publishDate  %>-->
-<body class="body-loading" id="body">
-<div id="loading" class="sk-cube-grid">
-  <div class="sk-cube sk-cube-1"></div>
-  <div class="sk-cube sk-cube-2"></div>
-  <div class="sk-cube sk-cube-3"></div>
-  <div class="sk-cube sk-cube-4"></div>
-  <div class="sk-cube sk-cube-5"></div>
-  <div class="sk-cube sk-cube-6"></div>
-  <div class="sk-cube sk-cube-7"></div>
-  <div class="sk-cube sk-cube-8"></div>
-  <div class="sk-cube sk-cube-9"></div>
+<body class='body-loading' id='body'>
+<div id='loading' class='sk-cube-grid'>
+  <div class='sk-cube sk-cube-1'></div>
+  <div class='sk-cube sk-cube-2'></div>
+  <div class='sk-cube sk-cube-3'></div>
+  <div class='sk-cube sk-cube-4'></div>
+  <div class='sk-cube sk-cube-5'></div>
+  <div class='sk-cube sk-cube-6'></div>
+  <div class='sk-cube sk-cube-7'></div>
+  <div class='sk-cube sk-cube-8'></div>
+  <div class='sk-cube sk-cube-9'></div>
 </div>
-<div id="root">
+<div id='root'>
 </div>
 </body>
 </html>

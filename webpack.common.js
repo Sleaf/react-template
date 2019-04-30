@@ -13,7 +13,7 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length * 2 });
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    app: './src/index.js',
+    app: './src/index.tsx',
   },
   output: {
     path: resolve(__dirname, 'build'),
@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         include: resolve(__dirname, 'src'),
         // This is a feature of `babel-loader` for webpack (not Babel itself).
@@ -97,7 +97,6 @@ module.exports = {
       id: 'happy-babel',
       //如何处理  用法和loader 的配置一样
       loaders: [
-        'react-hot-loader/webpack',
         'babel-loader?cacheDirectory=true',
       ],
       //共享进程池
@@ -110,6 +109,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
+      '~': resolveToStaticPath('.'),
       '@': resolveToStaticPath('./src'),
       'react-dom': '@hot-loader/react-dom',
     },
