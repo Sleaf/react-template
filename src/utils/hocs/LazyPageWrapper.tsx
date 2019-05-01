@@ -1,15 +1,16 @@
 import React from "react";
-import Loading from "@/components/Loading";
+import { ComponentType } from "~/node_modules/@types/react";
+import Loading from "@/components/Loading.tsx";
 
 /**
  * @example
- * const LazyComponent=LazyPageWrapper(import('@/components/Example.js'))
+ * const LazyComponent=LazyPageWrapper(()=>import('@/components/Example.js'))
  * */
-export default impComponent => props => {
-  const Component = React.lazy(_ => impComponent);
+export default (impComponent: () => Promise<{ default: ComponentType<any> }>) => (props: Object) => {
+  const LazyComponent = React.lazy((impComponent));
   return (
     <React.Suspense fallback={<Loading />}>
-      <Component {...props} />
+      <LazyComponent {...props} />
     </React.Suspense>
   )
 };

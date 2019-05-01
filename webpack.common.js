@@ -9,6 +9,7 @@ const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').defa
 const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length * 2 });
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -66,9 +67,9 @@ module.exports = {
     ],
   },
   plugins: [
-    // 复制错误页面
+    // 复制静态资源
     new CopyWebpackPlugin([{ from: 'src/static', to: 'resources', toType: 'dir' },]),
-    //提取css
+    // 提取css
     new MiniCssExtractPlugin({
       filename: 'resources/css/style.[hash].css',
     }),
@@ -91,7 +92,7 @@ module.exports = {
       },
       version: `${pkg.version}`,
     }),
-    //parallel build
+    // parallel build
     new HappyPack({
       //用id来标识 happypack处理那里类文件
       id: 'happy-babel',
@@ -104,7 +105,9 @@ module.exports = {
       //允许 HappyPack 输出日志
       verbose: true,
     }),
-    //tree shaking
+    // typescript type check
+    new ForkTsCheckerWebpackPlugin(),
+    // tree shaking
     new WebpackDeepScopeAnalysisPlugin(),
   ],
   resolve: {

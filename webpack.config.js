@@ -46,9 +46,6 @@ module.exports = merge(common, {
     // },
   },
   plugins: [
-    // 忽略 moment 语言文件
-    // @see https://github.com/jmblog/how-to-optimize-momentjs-with-webpack#using-ignoreplugin
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     // 移除 dist 目录
     new CleanWebpackPlugin(),
     // 图形化分析工具

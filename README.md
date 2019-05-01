@@ -1,5 +1,5 @@
 # React Template
-> 自用React模板
+> 自用 React 模板
 
 ## 包含库/功能
 ### React & React-hot-loader & Css-hot-loader
@@ -10,7 +10,7 @@
 
 ### Babel
 > 可访问[Awesome Babel](https://github.com/babel/awesome-babel)自行安装喜欢的插件
-- `typescript` 使用`@babel/preset-typescript`~~和[fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)实现~~
+- `typescript` 使用`@babel/preset-typescript`和[fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)(类型检查)实现
 - `lodash` 实现自动部分导入
 - `jest` 可编写现代 JS / TS
 - [`react-directive`](https://github.com/evolify/babel-plugin-react-directive) 支持像Vue一样编写`v-if`/`v-for` 

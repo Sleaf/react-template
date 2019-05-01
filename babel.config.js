@@ -1,5 +1,3 @@
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-
 module.exports = {
   'presets': [
     ['@babel/preset-env', { 'modules': false }],
@@ -9,7 +7,6 @@ module.exports = {
   'plugins': [
     // prepaer
     '@babel/plugin-transform-runtime',
-    // new ForkTsCheckerWebpackPlugin(),
     /* follow https://github.com/babel/proposals */
     // Stage 0
     "@babel/plugin-proposal-function-bind",

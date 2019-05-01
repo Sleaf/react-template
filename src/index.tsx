@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '@/App.tsx';
 import ready from '@/ready.ts';
-import {setTagTitle, removeElement, removeClass} from '@/utils/domLib.ts';
+import { setTagTitle, removeElement, removeClass } from '@/utils/domLib.ts';
 import pkg from '~/package.json';
 import '@/styles/index.less';
 
