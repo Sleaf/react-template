@@ -30,7 +30,6 @@ module.exports = merge(common, {
         parallel: true,
         uglifyOptions: {
           compress: {
-            warnings: false,
             drop_console: true,
           },
         },
@@ -49,6 +48,6 @@ module.exports = merge(common, {
     // 移除 dist 目录
     new CleanWebpackPlugin(),
     // 图形化分析工具
-    ...(args.analyze ? [new BundleAnalyzerPlugin()] : []),
+    ...(args['analyze'] ? [new BundleAnalyzerPlugin()] : []),
   ],
 });

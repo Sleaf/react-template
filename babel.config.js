@@ -1,7 +1,17 @@
 module.exports = {
+  'env': {
+    // for jest
+    'test': {
+      'presets': [
+        ['@babel/preset-env'],
+        "@babel/preset-typescript",
+        '@babel/preset-react',
+      ],
+    },
+  },
   'presets': [
     ['@babel/preset-env', { 'modules': false }],
-    "@babel/typescript",
+    "@babel/preset-typescript",
     '@babel/preset-react',
   ],
   'plugins': [

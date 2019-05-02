@@ -4,7 +4,6 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const pkg = require('./package');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const resolveToStaticPath = relativePath => resolve(__dirname, relativePath);
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 const HappyPack = require('happypack');
 const os = require('os');
@@ -12,7 +11,6 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length * 2 });
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = {
-  mode: process.env.NODE_ENV,
   entry: {
     app: './src/index.tsx',
   },
@@ -70,14 +68,13 @@ module.exports = {
     // 复制静态资源
     new CopyWebpackPlugin([{ from: 'src/static', to: 'resources', toType: 'dir' },]),
     // 提取css
-    new MiniCssExtractPlugin({
-      filename: 'resources/css/style.[hash].css',
-    }),
+    new MiniCssExtractPlugin({ filename: 'resources/css/style.[hash].css' }),
     // 确保 vendors 的 chunkhash 只随内容变化
     // @see https://webpack.js.org/guides/caching/#module-identifiers
     new webpack.HashedModuleIdsPlugin(),
     new HtmlwebpackPlugin({
       title: 'Loading...',
+      version: `${pkg.version}`,
       buildTime: new Date().toLocaleString(),
       filename: 'index.html',
       favicon: 'src/assets/favicon.ico',
@@ -90,7 +87,6 @@ module.exports = {
         minifyCSS: true,
         minifyJS: true,
       },
-      version: `${pkg.version}`,
     }),
     // parallel build
     new HappyPack({
@@ -112,8 +108,8 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      '~': resolveToStaticPath('.'),
-      '@': resolveToStaticPath('./src'),
+      '~': resolve(__dirname, '.'),
+      '@': resolve(__dirname, './src'),
       'react-dom': '@hot-loader/react-dom',
     },
   },
