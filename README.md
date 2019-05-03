@@ -1,5 +1,6 @@
 # React Template
 > 自用 React 模板
+> 不支持 IE ，请自行安装配置 polyfill/shim/sham
 
 ## 包含库/功能
 ### React & React-hot-loader & Css-hot-loader
@@ -26,7 +27,7 @@
 
 ### 其他
 - **less** 可自行在`webpack.common.js`中替换为 sass / stylus 等配置
-- **postcss** 支持 grid 布局，同时将最低兼容浏览器提升至 IE10
+- **postcss** 支持 grid 布局
 - **webpack-bundle-analyzer** 使用`npm run analyze`分析生产包结构
 - **why-did-you-update** 将 react 组件渲染情况在控制台输出（自行开启）
 

@@ -13,7 +13,6 @@
   },
   "author": "Sleaf",
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
     "@hot-loader/react-dom": "^16.8.6",
     "react": "^16.8.6",
     "react-hot-loader": "^4.8.4"
@@ -85,5 +84,9 @@
     "webpack-merge": "^4.2.1",
     "why-did-you-update": "^1.0.6"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
   "license": "MIT"
 }

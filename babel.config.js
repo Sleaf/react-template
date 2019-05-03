@@ -1,16 +1,10 @@
+const envConfig = {
+  modules: process.env.NODE_ENV === 'test' && 'auto',
+};
+
 module.exports = {
-  'env': {
-    // for jest
-    'test': {
-      'presets': [
-        ['@babel/preset-env'],
-        "@babel/preset-typescript",
-        '@babel/preset-react',
-      ],
-    },
-  },
   'presets': [
-    ['@babel/preset-env', { 'modules': false }],
+    ['@babel/preset-env', envConfig],
     "@babel/preset-typescript",
     '@babel/preset-react',
   ],

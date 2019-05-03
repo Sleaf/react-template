@@ -17,11 +17,11 @@ module.exports = merge(common, {
     compress: true,
     host: ENABLE_SSL || __isWindows__ ? 'localhost' : '0.0.0.0',
     port: process.env.PORT || 3000,
-    https: ENABLE_SSL && {
+    https: !!ENABLE_SSL && {
       key: fs.readFileSync(join(__dirname, 'ssl/ssl.localhost.key')),
       cert: fs.readFileSync(join(__dirname, 'ssl/ssl.localhost.crt'))
     },
-    allowedHosts: ENABLE_SSL ? ['localhost'] : [],
+    allowedHosts: ENABLE_SSL && ['localhost'],
     proxy: {
       '/api': {
         target: 'http://localhost',
