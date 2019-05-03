@@ -14,7 +14,6 @@
 - `typescript` 使用 `@babel/preset-typescript` 和 [fork-ts-checker-webpack-plugin(类型检查)](https://github.com/Realytics/fork-ts-checker-webpack-plugin) 实现
 - `lodash` 实现自动部分导入
 - `jest` 可编写现代 JS / TS
-- [`react-directive`](https://github.com/evolify/babel-plugin-react-directive) 支持像Vue一样编写 `v-if` / `v-for` 
 - [官方支持的proposal](https://github.com/babel/proposals) 相关插件 
 
 ### Https自签支持（localhost）

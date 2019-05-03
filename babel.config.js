@@ -33,7 +33,6 @@ module.exports = {
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-json-strings",
     // Others
-    'react-directive', // use directive like Vue
     'lodash', // A simple transform to cherry-pick Lodash modules so you don’t have to.
     // Hot Reload
     'react-hot-loader/babel',
