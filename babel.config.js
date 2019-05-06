@@ -1,5 +1,6 @@
+const __isTest__ = process.env.NODE_ENV === 'test';
 const envConfig = {
-  modules: process.env.NODE_ENV === 'test' && 'auto',
+  modules: __isTest__ && 'auto',
 };
 
 module.exports = {

@@ -6,8 +6,10 @@ import { setTagTitle, removeElement, removeClass } from '@/utils/domLib.ts';
 import pkg from '~/package.json';
 import '@/styles/index.less';
 
+const __isDev__ = process.env.NODE_ENV === 'development';
+
 //debug
-if (process.env.NODE_ENV === 'development') {
+if (__isDev__) {
   // // why-did-you-update
   // const { whyDidYouUpdate } = require('why-did-you-update');
   // whyDidYouUpdate(React);

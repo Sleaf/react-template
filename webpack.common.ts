@@ -10,6 +10,8 @@ const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').defa
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HappyPack = require('happypack');
 
+const __isDev__ = process.env.NODE_ENV === 'development';
+
 export default {
   entry: {
     app: './src/index.tsx',

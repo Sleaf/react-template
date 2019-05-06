@@ -3,9 +3,26 @@ import express from 'express';
 import WebpackDevServer = require("webpack-dev-server");
 import { NextFunction, Request, Response } from "express-serve-static-core";
 
+enum HttpStatus {
+  OK = 200,
+  Created = 201,
+  Accepted = 202,
+  NoContent = 204,
+  MovedPermanently = 301,
+  BadRequest = 400,
+  Unauthorized = 401,
+  Forbidden = 403,
+  NotFound = 404,
+  MethodNotAllowed = 405,
+  Conflict = 409,
+  Gone = 410,
+  InternalServerError = 500,
+  ServiceUnavailable = 503,
+}
+
 /*
  * 参考使用 Express.js 的文档： http://expressjs.com/zh-cn/4x/api.html
- * 这部分会在 Proxy 操作之前，可不修改 Proxy 设置。
+ * 这部分将会拦截 Proxy 操作，故不必修改 Proxy 设置。
  * */
 export default (app: express.Application, server: WebpackDevServer) => {
   // Example
