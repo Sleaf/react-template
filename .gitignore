@@ -1,7 +1,6 @@
 node_modules/
-/build/
-/src/styles/themes/
+/build*/
 .idea
-.DS_Store
-.env
 *.log
+yarn.lock
+.DS_Store

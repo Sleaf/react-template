@@ -1,16 +1,16 @@
-const { resolve } = require('path');
-const webpack = require('webpack');
+import { resolve } from 'path';
+import webpack from 'webpack';
+import os from 'os';
+import pkg from './package.json';
+// Plugins
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const pkg = require('./package');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
-const HappyPack = require('happypack');
-const os = require('os');
-const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length * 2 });
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HappyPack = require('happypack');
 
-module.exports = {
+export default {
   entry: {
     app: './src/index.tsx',
   },
@@ -93,11 +93,9 @@ module.exports = {
       //用id来标识 happypack处理那里类文件
       id: 'happy-babel',
       //如何处理  用法和loader 的配置一样
-      loaders: [
-        'babel-loader?cacheDirectory=true',
-      ],
+      loaders: ['babel-loader?cacheDirectory=true'],
       //共享进程池
-      threadPool: happyThreadPool,
+      threadPool: HappyPack.ThreadPool({ size: os.cpus().length * 2 }),
       //允许 HappyPack 输出日志
       verbose: true,
     }),
