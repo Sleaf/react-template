@@ -1,14 +1,14 @@
 import { resolve } from 'path';
 import webpack from 'webpack';
 import os from 'os';
-import pkg from './package.json';
+import HappyPack from 'happypack';
+import pkg from '~/package.json';
 // Plugins
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HappyPack = require('happypack');
 
 const __isDev__ = process.env.NODE_ENV === 'development';
 
@@ -34,9 +34,7 @@ export default {
       },
       {
         test: /\.(c|le)ss$/,
-        use: (process.env.NODE_ENV === 'development'
-          ? ['css-hot-loader', 'style-loader']
-          : [MiniCssExtractPlugin.loader])
+        use: (__isDev__ ? ['css-hot-loader', 'style-loader'] : [MiniCssExtractPlugin.loader])
           .concat([
             'css-loader',
             'postcss-loader',
@@ -97,9 +95,7 @@ export default {
       //如何处理  用法和loader 的配置一样
       loaders: ['babel-loader?cacheDirectory=true'],
       //共享进程池
-      threadPool: HappyPack.ThreadPool({ size: os.cpus().length * 2 }),
-      //允许 HappyPack 输出日志
-      verbose: true,
+      threads: os.cpus().length * 2,
     }),
     // typescript type check
     new ForkTsCheckerWebpackPlugin(),
@@ -107,6 +103,7 @@ export default {
     new WebpackDeepScopeAnalysisPlugin(),
   ],
   resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       '~': resolve(__dirname, '.'),
       '@': resolve(__dirname, './src'),
