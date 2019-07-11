@@ -75,7 +75,7 @@ export default {
     new HtmlwebpackPlugin({
       title: 'Loading...',
       version: `${pkg.version}`,
-      buildTime: new Date().toLocaleString(),
+      publishDate: new Date().toLocaleString(),
       filename: 'index.html',
       favicon: 'src/assets/favicon.ico',
       template: 'src/index.html',
@@ -83,7 +83,6 @@ export default {
       minify: {
         collapseInlineTagWhitespace: true,
         collapseWhitespace: true,
-        removeComments: true,
         minifyCSS: true,
         minifyJS: true,
       },
