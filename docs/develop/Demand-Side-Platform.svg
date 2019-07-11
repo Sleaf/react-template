@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Hyper Demand Side Platform</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="9.77387549%" y1="8.4174144%" x2="88.5861923%" y2="86.4082299%" id="linearGradient-1">
+            <stop stop-color="#83E5EB" offset="0%"></stop>
+            <stop stop-color="#38CBD9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Hyper-Demand-Side-Platform" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M25,50 C11.1928813,50 0,38.8071187 0,25 C0,11.1928813 11.1928813,0 25,0 C38.8071187,0 50,11.1928813 50,25 C50,38.8071187 38.8071187,50 25,50 Z M25,40 C33.2842712,40 40,33.2842712 40,25 C40,16.7157288 33.2842712,10 25,10 C16.7157288,10 10,16.7157288 10,25 C10,33.2842712 16.7157288,40 25,40 Z M25,30 C22.2385763,30 20,27.7614237 20,25 C20,22.2385763 22.2385763,20 25,20 C27.7614237,20 30,22.2385763 30,25 C30,27.7614237 27.7614237,30 25,30 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+    </g>
+</svg>

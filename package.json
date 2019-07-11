@@ -9,6 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --colors",
     "dev-https": "yarn dev --https",
     "dev-mock": "yarn dev --mock",
+    "doc-dev": "docsify serve docs/develop -o -p 3202",
     "analyze": "yarn build --analyze",
     "test": "cross-env NODE_ENV=test jest"
   },
@@ -61,6 +62,7 @@
     "css-hot-loader": "^1.4.4",
     "css-loader": "^2.1.1",
     "cssnano": "^4.1.10",
+    "docsify-cli": "^4.3.0",
     "file-loader": "^3.0.1",
     "fork-ts-checker-webpack-plugin": "^1.2.0",
     "happypack": "^5.0.1",

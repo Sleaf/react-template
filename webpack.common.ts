@@ -66,7 +66,7 @@ export default {
   },
   plugins: [
     // 复制静态资源
-    new CopyWebpackPlugin([{ from: 'src/static', to: 'resources', toType: 'dir' },]),
+    new CopyWebpackPlugin([{ from: 'public', to: 'resources', toType: 'dir' },]),
     // 提取css
     new MiniCssExtractPlugin({ filename: 'resources/css/style.[hash].css' }),
     // 确保 vendors 的 chunkhash 只随内容变化

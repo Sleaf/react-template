@@ -35,6 +35,13 @@
 - 在 `webpack.dev.ts`> `devServer` > [before](https://webpack.js.org/configuration/dev-server/#devserverbefore) 注入对应函数实现 mock 服务器
 - 实现函数在 `mockServer/index.ts` 中，请根据样例和[ Express 官方文档 ](http://expressjs.com/zh-cn/4x/api.html)编辑使用。
 
+### [docsify](https://docsify.js.org/#/zh-cn/quickstart) 文档支持
+> 使用 `yarn doc-dev` 启用 docsify 服务器，即可在 3202 端口查看编写的文档
+- 文档在 `./docs` 目录中，
+  > - `./develop` 为开发文档（**对内**）
+  > - `./help` 为帮助文档（**对外**）
+- 支持 [markdown](https://www.markdown.cn/) 语法。
+
 ### 其他
 - **less**: 可自行在`webpack.common.ts`中替换为 sass / stylus 等配置
 - **postcss**: 支持 grid 布局，相关现代CSS支持
