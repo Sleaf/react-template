@@ -5,7 +5,7 @@ import common from "./webpack.common";
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const args = require('minimist')(process.argv);
 
 // Configs
@@ -28,25 +28,31 @@ module.exports = merge(common, {
         },
         canPrint: true,
       }),
-      new UglifyJsPlugin({
-        exclude: /node_modules/,
+      // 压缩 js
+      new TerserPlugin({
+        test: /\.js$/i,
         cache: true,
         parallel: true,
-        uglifyOptions: {
+        terserOptions: {
+          warnings: false,
           compress: {
             drop_console: true,
+          },
+          output: {
+            beautify: false,
+            comments: false,
           },
         },
         sourceMap: false,
       }),
     ],
-    // splitChunks: {
-    //   chunks: 'all',
-    //   name: 'vendors',
-    // },
-    // runtimeChunk: {
-    //   name: 'runtime',
-    // },
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendors',
+    },
+    runtimeChunk: {
+      name: 'runtime',
+    },
   },
   plugins: [
     // 移除 dist 目录

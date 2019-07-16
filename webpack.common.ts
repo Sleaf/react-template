@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import webpack from 'webpack';
 import os from 'os';
 import HappyPack from 'happypack';
-import pkg from '~/package.json';
+import pkg from './package.json';
 // Plugins
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
