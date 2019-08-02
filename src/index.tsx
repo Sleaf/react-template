@@ -10,9 +10,9 @@ const __isDev__ = process.env.NODE_ENV === 'development';
 
 //debug
 if (__isDev__) {
-  // // why-did-you-update
-  // const { whyDidYouUpdate } = require('why-did-you-update');
-  // whyDidYouUpdate(React);
+  // //why-did-you-render
+  // const whyDidYouRender = require('@welldone-software/why-did-you-render');
+  // whyDidYouRender(React, { include: [/^./] }); // rewrite you want here
 }
 
 //page onLoaded
