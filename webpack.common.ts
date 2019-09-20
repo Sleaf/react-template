@@ -106,7 +106,6 @@ export default {
     alias: {
       '~': resolve(__dirname, '.'),
       '@': resolve(__dirname, './src'),
-      'react-dom': '@hot-loader/react-dom',
     },
   },
 };
