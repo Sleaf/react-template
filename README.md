@@ -47,6 +47,7 @@
 - **postcss**: 支持 grid 布局，相关现代CSS支持
 - **webpack-bundle-analyzer**: 使用`yarn analyze`分析生产包结构
 - **@welldone-software/why-did-you-render**: 将 react 组件渲染情况在控制台输出（在`src/index.tsx`中按需开启）
+- 各类自用实用工具
 
 ## 待添加的功能
 - ~~多预编译器支持（参考vue-cli）~~

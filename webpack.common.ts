@@ -3,14 +3,17 @@ import webpack from 'webpack';
 import os from 'os';
 import HappyPack from 'happypack';
 import pkg from './package.json';
+
 // Plugins
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 const __isDev__ = process.env.NODE_ENV === 'development';
+const __isPrd__ = process.env.NODE_ENV === 'production';
+export const __isWindows__ = process.platform === 'win32';
 
 export default {
   entry: {
@@ -67,6 +70,12 @@ export default {
   plugins: [
     // 复制静态资源
     new CopyWebpackPlugin([{ from: 'public', to: 'resources', toType: 'dir' },]),
+    // 全局变量定义
+    new webpack.DefinePlugin({
+      __isPrd__: JSON.stringify(__isPrd__),
+      __isDev__: JSON.stringify(__isDev__),
+      __isWindows__: JSON.stringify(process.platform === 'win32'),
+    }),
     // 提取css
     new MiniCssExtractPlugin({ filename: 'resources/css/style.[hash].css' }),
     // 确保 vendors 的 chunkhash 只随内容变化

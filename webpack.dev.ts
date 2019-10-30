@@ -1,10 +1,9 @@
 import { resolve } from 'path';
 import fs from 'fs';
 import merge from 'webpack-merge';
-import common from './webpack.common';
+import common, { __isWindows__ } from './webpack.common';
 import mockServer from './mockServer/index';
 
-const __isWindows__ = process.platform === 'win32';
 const args = require('minimist')(process.argv);
 
 // Configs

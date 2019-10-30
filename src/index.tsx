@@ -6,8 +6,6 @@ import { setTagTitle, removeElement, removeClass } from '@/utils/domLib.ts';
 import pkg from '~/package.json';
 import '@/styles/index.less';
 
-const __isDev__ = process.env.NODE_ENV === 'development';
-
 //debug
 if (__isDev__) {
   // //why-did-you-render
