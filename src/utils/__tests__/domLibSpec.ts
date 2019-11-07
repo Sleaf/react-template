@@ -1,4 +1,4 @@
-import { removeClass, removeElement, setTagTitle } from "../domLib";
+import { removeClass, removeElement, setTagTitle } from '../domLib';
 
 test('Should remove element', () => {
   const TEST_ID = 'testDiv';

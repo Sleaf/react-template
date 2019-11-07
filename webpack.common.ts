@@ -21,8 +21,8 @@ export default {
   },
   output: {
     path: resolve(__dirname, 'build'),
-    filename: 'resources/js/[name].[hash].js',
     publicPath: '/',
+    filename: 'resources/js/[name].[hash].js',
   },
   module: {
     rules: [
@@ -49,7 +49,6 @@ export default {
         loader: 'url-loader',
         options: {
           limit: 1,
-          publicPath: '/',
           name: `resources/images/[hash].[ext]`,
         },
       },
@@ -62,7 +61,6 @@ export default {
           hash: 'sha512',
           digest: 'hex',
           name: `resources/fonts/[hash].[ext]`,
-          publicPath: '/',
         },
       },
     ],

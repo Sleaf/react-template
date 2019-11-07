@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 type Props = {
   loaded?: boolean,
 }
-export default ({loaded}: Props) => (
+export default ({ loaded }: Props) => (
   <div className='holder no-touch'>
     {
       loaded

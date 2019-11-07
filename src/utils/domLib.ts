@@ -1,9 +1,7 @@
 type Element = HTMLElement | null;
 
 export function removeElement(el: Element): Element {
-  if (el !== null) {
-    el.parentNode!.removeChild(el)
-  }
+  el?.parentNode!.removeChild(el!);
   return el;
 }
 

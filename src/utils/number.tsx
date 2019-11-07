@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { safeFunc } from '@/utils/func';
 
 export type  DataFormatter = (num?: Nullable<number>) => React.ReactNode;

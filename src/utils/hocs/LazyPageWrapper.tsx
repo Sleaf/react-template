@@ -1,6 +1,5 @@
-import React from "react";
-import { ComponentType } from "~/node_modules/@types/react";
-import Loading from "@/components/Loading.tsx";
+import React, { ComponentType } from 'react';
+import Loading from '@/components/Loading.tsx';
 
 /**
  * @example
@@ -12,5 +11,5 @@ export default (impComponent: () => Promise<{ default: ComponentType<any> }>) =>
     <React.Suspense fallback={<Loading />}>
       <LazyComponent {...props} />
     </React.Suspense>
-  )
+  );
 };
