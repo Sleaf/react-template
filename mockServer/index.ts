@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import express from 'express';
-import WebpackDevServer = require("webpack-dev-server");
-import { NextFunction, Request, Response } from "express-serve-static-core";
+import { NextFunction, Request, Response } from 'express-serve-static-core';
+import WebpackDevServer = require('webpack-dev-server');
 
 enum HttpStatus {
   OK = 200,

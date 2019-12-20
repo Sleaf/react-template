@@ -21,7 +21,7 @@ export default merge(common, {
     port: Number(process.env.PORT) || 3000,
     https: ENABLE_SSL && {
       key: fs.readFileSync(resolve(__dirname, 'ssl/ssl.localhost.key')),
-      cert: fs.readFileSync(resolve(__dirname, 'ssl/ssl.localhost.crt'))
+      cert: fs.readFileSync(resolve(__dirname, 'ssl/ssl.localhost.crt')),
     },
     before: ENABLE_mockServer ? mockServer : undefined,
     proxy: {

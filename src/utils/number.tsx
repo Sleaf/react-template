@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { safeFunc } from '@/utils/func';
 
 export type  DataFormatter = (num?: Nullable<number>) => React.ReactNode;
@@ -82,6 +82,6 @@ export const toRMB = (number?: Nullable<number>, formatter = toRound) => `￥${f
 export const toRankText = (rank: number) => holderFilter(rank) || `${~~rank} ${~~rank < 20 ? toPostFix(~~rank) : toPostFix(~~rank % 10)}`;
 export const toRankNode = (rank: number, props?: any) => {
   const postfix = ~~rank < 20 ? toPostFix(~~rank) : toPostFix(~~rank % 10);
-  return holderFilter(rank) || <span {...props}>{~~rank}<sup>{postfix}</sup></span>
+  return holderFilter(rank) || <span {...props}>{~~rank}<sup>{postfix}</sup></span>;
 };
 export const toCeilSize = (originNum: number, gap: number = 10) => Math.ceil(originNum / gap) * gap;

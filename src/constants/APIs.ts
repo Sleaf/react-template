@@ -4,7 +4,7 @@
  * 如有返回值必须声明返回值类型，本页即API文档
  * */
 /* Utils */
-import { GET, POST, PUT, PATCH, DELETE } from '@/utils/request';
+import { GET } from '@/utils/request';
 
 
 /*

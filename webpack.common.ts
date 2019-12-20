@@ -3,13 +3,13 @@ import webpack from 'webpack';
 import os from 'os';
 import HappyPack from 'happypack';
 import pkg from './package.json';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 // Plugins
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 const __isDev__ = process.env.NODE_ENV === 'development';
 const __isPrd__ = process.env.NODE_ENV === 'production';
@@ -67,7 +67,7 @@ export default {
   },
   plugins: [
     // 复制静态资源
-    new CopyWebpackPlugin([{ from: 'public', to: 'resources', toType: 'dir' },]),
+    new CopyWebpackPlugin([{ from: 'public', to: 'resources', toType: 'dir' }]),
     // 全局变量定义
     new webpack.DefinePlugin({
       __isPrd__: JSON.stringify(__isPrd__),
