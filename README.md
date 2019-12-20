@@ -1,19 +1,18 @@
 # React Template
 > - 自用 React 模板， 推荐使用 [yarn](https://yarnpkg.com) 进行包管理，如果要使用 `npm` ，请替换 `package.json` 中相关字段。
-> - 不支持 IE ，请自行安装配置 [polyfill](https://babeljs.io/docs/en/babel-polyfill) / shim / sham
+> - 默认不支持 IE ，如有需要请自行安装配置 [polyfill](https://babeljs.io/docs/en/babel-polyfill) / shim / sham
 
 ## 包含功能/库
 ### React & 🔥 Reload
 - [React Hot Loader](https://github.com/gaearon/react-hot-loader): 实现 Stateful Hot Reload ，完美替代 HMR
 - [@hot-loader/react-dom](https://github.com/hot-loader/react-dom): 替换官方 `react-dom` 以支持 `React Hooks`
-- [css-hot-loader](https://github.com/shepherdwind/css-hot-loader): 实现 CSS 无刷新热重载
-  > 虽然官方表示[ mini-css-extract-plugin ](https://github.com/webpack-contrib/mini-css-extract-plugin#advanced-configuration-example)已经集成，但经测试，目前的版本并不可用。  
+- [mini-css-extract-plugin ](https://github.com/webpack-contrib/mini-css-extract-plugin#advanced-configuration-example): 实现 CSS 无刷新热重载
 - 支持官方 React.lazy 分块，并封装于 `src/utils/hocs/LazyPageWrapper.tsx`
 
 ### Babel
 > 可访问 [Awesome Babel](https://github.com/babel/awesome-babel) 自行安装喜欢的插件
 - [官方支持的proposal](https://github.com/babel/proposals) 相关插件 
-- [babel-plugin-lodash](https://github.com/lodash/babel-plugin-lodash) 实现自动部分导入
+- [babel-plugin-lodash](https://github.com/lodash/babel-plugin-lodash) 实现自动切片，无需手动部分引用
 - [babel-jest(已整合进Jest)](https://github.com/facebook/jest#using-babel) 可在测试中编写现代 JS / TS 
 
 ### TypeScript
@@ -43,14 +42,15 @@
 - 支持 [markdown](https://www.markdown.cn/) 语法。
 
 ### 其他
-- **less**: 可自行在`webpack.common.ts`中替换为 sass / stylus 等配置
+- **多预编译器支持**: webpack配置默认支持 `less`/`sass`/`stylus`
+    > - 默认安装less相关依赖，如需使用其他预编译器请安装对应相关依赖。
+    > - `.scss`文件存在解析问题（`.sass`可正常使用）暂未解决，如有朋友知道解决方案欢迎提PR，感谢🙏。
 - **postcss**: 支持 grid 布局，相关现代CSS支持
 - **webpack-bundle-analyzer**: 使用`yarn analyze`分析生产包结构
 - **@welldone-software/why-did-you-render**: 将 react 组件渲染情况在控制台输出（在`src/index.tsx`中按需开启）
-- 各类自用实用工具
+- 各类实用工具
 
 ## 待添加的功能
-- ~~多预编译器支持（参考vue-cli）~~
 - 国际化方案支持
 - 多主题方案支持
 - ESLint + prettier 支持

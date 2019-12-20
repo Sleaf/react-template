@@ -11,9 +11,37 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 
+// env
+export const __isWindows__ = process.platform === 'win32';
 const __isDev__ = process.env.NODE_ENV === 'development';
 const __isPrd__ = process.env.NODE_ENV === 'production';
-export const __isWindows__ = process.platform === 'win32';
+const additionHash = __isPrd__ ? '.[hash]' : '';
+
+// css loader
+const toStyleLoader = (suffix: string | Array<string>, loaderPrefix, options?) => {
+  const suffixList = Array.isArray(suffix) ? suffix : [suffix];
+  return {
+    test: new RegExp(`\.(${suffixList.join('|')})$`),
+    use: [
+      { loader: MiniCssExtractPlugin.loader, options: { hmr: __isDev__ } },
+      'css-loader',
+      'postcss-loader',
+      {
+        loader: `${loaderPrefix}-loader`,
+        options: {
+          sourceMap: __isDev__,
+          ...options,
+        },
+      },
+    ],
+  };
+};
+const styleSupportList = [
+  { suffix: ['css'], loaderPrefix: 'css' },
+  { suffix: ['less'], loaderPrefix: 'less', options: { javascriptEnabled: true } },
+  { suffix: ['sass', 'scss'], loaderPrefix: 'sass' },
+  { suffix: ['styl'], loaderPrefix: 'stylus' },
+];
 
 export default {
   entry: {
@@ -22,7 +50,7 @@ export default {
   output: {
     path: resolve(__dirname, 'build'),
     publicPath: '/',
-    filename: 'resources/js/[name].[hash].js',
+    filename: `resources/js/[name]${additionHash}.js`,
   },
   module: {
     rules: [
@@ -35,15 +63,7 @@ export default {
         // directory for faster rebuilds.
         loader: 'happypack/loader?id=happy-babel',
       },
-      {
-        test: /\.(c|le)ss$/,
-        use: (__isDev__ ? ['css-hot-loader', 'style-loader'] : [MiniCssExtractPlugin.loader])
-          .concat([
-            'css-loader',
-            'postcss-loader',
-            'less-loader?javascriptEnabled=true',
-          ]),
-      },
+      ...styleSupportList.map(({ suffix, loaderPrefix, options }) => toStyleLoader(suffix, loaderPrefix, options)),
       {
         test: /\.(jpe?g|png|gif|webp)$/,
         loader: 'url-loader',
@@ -75,7 +95,10 @@ export default {
       __isWindows__: JSON.stringify(process.platform === 'win32'),
     }),
     // 提取css
-    new MiniCssExtractPlugin({ filename: 'resources/css/style.[hash].css' }),
+    new MiniCssExtractPlugin({
+      filename: `resources/css/style${additionHash}.css`,
+      chunkFilename: `resources/css/[id]${additionHash}.css`,
+    }),
     // 确保 vendors 的 chunkhash 只随内容变化
     // @see https://webpack.js.org/guides/caching/#module-identifiers
     new webpack.HashedModuleIdsPlugin(),
@@ -111,7 +134,6 @@ export default {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      '~': resolve(__dirname, '.'),
       '@': resolve(__dirname, './src'),
     },
   },

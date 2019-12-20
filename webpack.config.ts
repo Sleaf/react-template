@@ -21,10 +21,7 @@ module.exports = merge(common, {
         cssProcessor: require('cssnano'),
         cssProcessorOptions: {
           discardComments: { removeAll: true },
-          // zindex 不优化
-          zindex: {
-            disabled: true,
-          },
+          zindex: { disabled: true }, // zindex 不优化
         },
         canPrint: true,
       }),
@@ -35,9 +32,7 @@ module.exports = merge(common, {
         parallel: true,
         terserOptions: {
           warnings: false,
-          compress: {
-            drop_console: true,
-          },
+          compress: { drop_console: true },
           output: {
             beautify: false,
             comments: false,
