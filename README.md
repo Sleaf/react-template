@@ -2,6 +2,18 @@
 > - 自用 React 模板， 推荐使用 [yarn](https://yarnpkg.com) 进行包管理，如果要使用 `npm` ，请替换 `package.json` 中相关字段。
 > - 默认不支持 IE ，如有需要请自行安装配置 [polyfill](https://babeljs.io/docs/en/babel-polyfill) / shim / sham
 
+## 快速开始
+```shell script
+yarn               # 安装依赖
+yarn dev           # 开发模式
+ # > dev-https     # 开发模式（启用https）
+ # > dev-mock      # 开发模式（启用mock服务器）
+yarn build         # 打包生产
+ # > analyze       # 打包生产（build之后打开包分析）
+yarn doc-dev       # 打开文档编写界面 
+yarn test          # 运行测试用例
+```
+
 ## 包含功能/库
 ### React & 🔥 Reload
 - [React Hot Loader](https://github.com/gaearon/react-hot-loader): 实现 Stateful Hot Reload ，完美替代 HMR
@@ -44,7 +56,6 @@
 ### 其他
 - **多预编译器支持**: webpack配置默认支持 `less`/`sass`/`stylus`
     > - 默认安装less相关依赖，如需使用其他预编译器请安装对应相关依赖。
-    > - `.scss`文件存在解析问题（`.sass`可正常使用）暂未解决，如有朋友知道解决方案欢迎提PR，感谢🙏。
 - **postcss**: 支持 grid 布局，相关现代CSS支持
 - **webpack-bundle-analyzer**: 使用`yarn analyze`分析生产包结构
 - **@welldone-software/why-did-you-render**: 将 react 组件渲染情况在控制台输出（在`src/index.tsx`中按需开启）

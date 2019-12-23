@@ -21,7 +21,7 @@ const additionHash = __isPrd__ ? '.[hash]' : '';
 const toStyleLoader = (suffix: string | Array<string>, loaderPrefix, options?) => {
   const suffixList = Array.isArray(suffix) ? suffix : [suffix];
   return {
-    test: new RegExp(`\.(${suffixList.join('|')})$`),
+    test: new RegExp(`\\.(${suffixList.join('|')})$`),
     use: [
       { loader: MiniCssExtractPlugin.loader, options: { hmr: __isDev__ } },
       'css-loader',
