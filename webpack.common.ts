@@ -2,8 +2,8 @@ import { resolve } from 'path';
 import webpack from 'webpack';
 import os from 'os';
 import HappyPack from 'happypack';
-import pkg from './package.json';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import pkg from './package.json';
 
 // Plugins
 const HtmlwebpackPlugin = require('html-webpack-plugin');
