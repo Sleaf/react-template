@@ -43,20 +43,25 @@ request.interceptors.response.use(
     }
   });
 
-const UrlMethod = {
-  get: (baseURL = '', params: Params = {}, dealParamsWith = pourIntoURL): any => request.get(dealParamsWith(baseURL, params)),
-  post: (baseURL = '', params: Params = {}, payload: Params = {}, dealParamsWith = pourIntoURL): any => request.post(dealParamsWith(baseURL, params), payload),
-  put: (baseURL = '', params: Params = {}, payload: Params = {}, dealParamsWith = pourIntoURL): any => request.put(dealParamsWith(baseURL, params), payload),
-  patch: (baseURL = '', params: Params = {}, payload: Params = {}, dealParamsWith = pourIntoURL): any => request.patch(dealParamsWith(baseURL, params), payload),
-  delete: (baseURL = '', params: Params = {}, dealParamsWith = pourIntoURL): any => request.delete(dealParamsWith(baseURL, params)),
-};
+
 /*
-* 默认声明返回值为never , 需要说明
+* 由于拦截器设置，强制声明返回结构
 * */
-export const GET = <T = never>([url]: TemplateStringsArray) => (params: Params = {}): Promise<T> => UrlMethod.get(url, params);
-export const POST = <T = never>([url]: TemplateStringsArray) => (params: Params = {}, payload: Params = {}): Promise<T> => UrlMethod.post(url, params, payload);
-export const PUT = <T = never>([url]: TemplateStringsArray) => (params: Params = {}, payload: Params = {}): Promise<T> => UrlMethod.put(url, params, payload);
-export const PATCH = <T = never>([url]: TemplateStringsArray) => (params: Params = {}, payload: Params = {}): Promise<T> => UrlMethod.patch(url, params, payload);
-export const DELETE = <T = never>([url]: TemplateStringsArray) => (params: Params = {}): Promise<T> => UrlMethod.delete(url, params);
+const UrlMethod = {
+  get: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> => request.get(dealParamsWith(baseURL, params)),
+  post: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> => request.post(dealParamsWith(baseURL, params), payload),
+  put: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> => request.put(dealParamsWith(baseURL, params), payload),
+  patch: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> => request.patch(dealParamsWith(baseURL, params), payload),
+  delete: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> => request.delete(dealParamsWith(baseURL, params)),
+};
+
+/*
+* 默认声明返回值为any , 需要强制声明可改为never
+* */
+export const GET = <T = any>([url]: TemplateStringsArray) => (params?: Params) => UrlMethod.get<T>(url, params);
+export const POST = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) => UrlMethod.post<T>(url, params, payload);
+export const PUT = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) => UrlMethod.put<T>(url, params, payload);
+export const PATCH = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) => UrlMethod.patch<T>(url, params, payload);
+export const DELETE = <T = any>([url]: TemplateStringsArray) => (params?: Params) => UrlMethod.delete<T>(url, params);
 
 export default UrlMethod;

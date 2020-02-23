@@ -65,3 +65,4 @@ yarn test          # 运行测试用例
 - 国际化方案支持
 - 多主题方案支持
 - ESLint + prettier 支持
+- create-react-app 支持
