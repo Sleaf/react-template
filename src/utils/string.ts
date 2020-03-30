@@ -34,37 +34,54 @@ export const fillParamsToString = (
   params: Params,
   splitter = Splitter.BRACE,
   callback: (paramKey: string) => any = doNothing,
-) => str && params
-  ? str.replace(getSplitterReg(splitter), (match: string, paramKey: string) => {
-    callback(paramKey);
-    const param = params[paramKey];
-    return param != null ? String(param) : '';
-  })
-  : str;
+) => {
+  if (str && params) {
+    return str.replace(getSplitterReg(splitter), (match: string, paramKey: string) => {
+      callback(paramKey);
+      const param = params[paramKey];
+      return param != null ? String(param) : '';
+    });
+  }
+  return str;
+};
 
 /**
  * @example appendParams('www.foo.com',{bar:'baz',aaa:1}) // return 'www.foo.com?bar=baz&aaa=1'
  * */
 export const appendParams = (URL = window.location.origin, params: Params = {}) =>
-  Object.entries(params).filter(([key, value]) => value)
+  Object.entries(params)
+    .filter(([key, value]) => {
+      switch (true) {
+        case typeof value === 'string' || Array.isArray(value): // 过滤空数组和空字符串
+          return value.length > 0;
+        case Number.isNaN(value): // 过滤NAN
+          return false;
+        case value instanceof Date:
+          console.error(`Warning: {${key}} is Date, must be formatted to string first, it's will be ignored.`, value);
+          return false;
+        default:
+          return value != null;
+      }
+    })
     .reduce((acc, [key, value], index) => `${acc + (index > 0 || acc.includes('?') ? '&' : '?')}${key}=${value}`, URL);
 
 /**
  * @example fillURL('user/:id/info',{id:123,aaa:1}) // return '/user/123/info'
  * */
-export const fillURL = (
-  template = '',
-  params: Params = {},
-  splitter = Splitter.PATH_COLON,
-  callback = doNothing,
-) => fillParamsToString(template, params, splitter, callback);
+export const fillURL = (template = '', params: Params = {}, splitter = Splitter.PATH_COLON, callback = doNothing) =>
+  fillParamsToString(template, params, splitter, callback);
 
 /**
  * @example fillURL('user/:id/info',{id:123,aaa:1}) // return '/user/123/info?aaa=1'
  * */
 export const pourIntoURL = (template = '', params: Params = {}, splitter = Splitter.PATH_COLON) => {
   let restParams = { ...params };
-  const filledURL = fillURL(template, params, splitter, (paramKey: string) => restParams = _.omit(restParams, paramKey));
+  const filledURL = fillURL(
+    template,
+    params,
+    splitter,
+    (paramKey: string) => (restParams = _.omit(restParams, paramKey)),
+  );
   return appendParams(filledURL, restParams);
 };
 
@@ -98,7 +115,7 @@ export const parseQuery = (template = '') => {
 };
 
 /*
-* 代替 String#match 使用
-* */
+ * 代替 String#match 使用
+ * */
 export const getRegxOrder = (template: string, regexp: string | RegExp, path: string | number): string =>
   _.get(template.match(regexp), path) || '';
