@@ -3,9 +3,7 @@ import { hot } from 'react-hot-loader/root';
 
 class App extends PureComponent {
   render() {
-    return (
-      <div>Hello World!</div>
-    );
+    return <div>Hello World!</div>;
   }
 }
 

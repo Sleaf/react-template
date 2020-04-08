@@ -12,10 +12,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 
 // env
-export const __isWindows__ = process.platform === 'win32';
-const __isDev__ = process.env.NODE_ENV === 'development';
-const __isPrd__ = process.env.NODE_ENV === 'production';
-const additionHash = __isPrd__ ? '.[hash]' : '';
+export const isWindows = process.platform === 'win32';
+const isDev = process.env.NODE_ENV === 'development';
+const isPrd = process.env.NODE_ENV === 'production';
+const additionHash = isPrd ? '.[hash]' : '';
 export const PUBLIC_PATH = '/';
 
 // css loader
@@ -24,13 +24,13 @@ const toStyleLoader = (suffix: string | Array<string>, loaderPrefix, options?) =
   return {
     test: new RegExp(`\\.(${suffixList.join('|')})$`),
     use: [
-      { loader: MiniCssExtractPlugin.loader, options: { hmr: __isDev__ } },
+      { loader: MiniCssExtractPlugin.loader, options: { hmr: isDev } },
       'css-loader',
       'postcss-loader',
       {
         loader: `${loaderPrefix}-loader`,
         options: {
-          sourceMap: __isDev__,
+          sourceMap: isDev,
           ...options,
         },
       },
@@ -91,9 +91,9 @@ export default {
     new CopyWebpackPlugin([{ from: 'public', to: 'resources', toType: 'dir' }]),
     // 全局变量定义
     new webpack.DefinePlugin({
-      __isPrd__: JSON.stringify(__isPrd__),
-      __isDev__: JSON.stringify(__isDev__),
-      __isWindows__: JSON.stringify(process.platform === 'win32'),
+      isPrd: JSON.stringify(isPrd),
+      isDev: JSON.stringify(isDev),
+      isWindows: JSON.stringify(process.platform === 'win32'),
     }),
     // 提取css
     new MiniCssExtractPlugin({

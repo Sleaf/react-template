@@ -32,26 +32,29 @@ const useFetchData = <F extends PromiseFunc>(
   const { value: isFetched, setValue: setFetched } = useBoolean(false);
   const componentAlive = useRef(true);
   useLayoutEffect(() => () => void (componentAlive.current = false), []);
-  const fetchData = useCallback(async (...payloads) => {
-    const cache = _.get(cachedConfig.current, 'cache', false);
-    !cache && setValue(cachedDefaultValue.current);
-    setFetched(false);
-    setFetching(true);
-    setTriggered(true);
-    try {
-      const result = await fetchFunc(...payloads);
-      if (componentAlive.current) {
-        setValue(result);
-        setFetched(true);
-        return result;
+  const fetchData = useCallback(
+    async (...payloads) => {
+      const cache = _.get(cachedConfig.current, 'cache', false);
+      !cache && setValue(cachedDefaultValue.current);
+      setFetched(false);
+      setFetching(true);
+      setTriggered(true);
+      try {
+        const result = await fetchFunc(...payloads);
+        if (componentAlive.current) {
+          setValue(result);
+          setFetched(true);
+          return result;
+        }
+      } finally {
+        if (componentAlive.current) {
+          setFetching(false);
+        }
       }
-    } finally {
-      if (componentAlive.current) {
-        setFetching(false);
-      }
-    }
-    return null;
-  }, [fetchFunc, setFetched, setFetching, setTriggered]);
+      return null;
+    },
+    [fetchFunc, setFetched, setFetching, setTriggered],
+  );
   const dryFetchData = useCallback(async () => {
     const cache = _.get(cachedConfig.current, 'cache', false);
     !cache && setValue(cachedDefaultValue.current);

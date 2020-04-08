@@ -41,27 +41,35 @@ request.interceptors.response.use(
         errorMsg && console.error(`Error: ${errorMsg}`, 0);
         return Promise.reject(err);
     }
-  });
-
+  },
+);
 
 /*
-* 由于拦截器设置，强制声明返回结构
-* */
+ * 由于拦截器设置，强制声明返回结构
+ * */
 const UrlMethod = {
-  get: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> => request.get(dealParamsWith(baseURL, params)),
-  post: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> => request.post(dealParamsWith(baseURL, params), payload),
-  put: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> => request.put(dealParamsWith(baseURL, params), payload),
-  patch: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> => request.patch(dealParamsWith(baseURL, params), payload),
-  delete: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> => request.delete(dealParamsWith(baseURL, params)),
+  get: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> =>
+    request.get(dealParamsWith(baseURL, params)),
+  post: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> =>
+    request.post(dealParamsWith(baseURL, params), payload),
+  put: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> =>
+    request.put(dealParamsWith(baseURL, params), payload),
+  patch: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> =>
+    request.patch(dealParamsWith(baseURL, params), payload),
+  delete: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> =>
+    request.delete(dealParamsWith(baseURL, params)),
 };
 
 /*
-* 默认声明返回值为any , 需要强制声明可改为never
-* */
+ * 默认声明返回值为any , 需要强制声明可改为never
+ * */
 export const GET = <T = any>([url]: TemplateStringsArray) => (params?: Params) => UrlMethod.get<T>(url, params);
-export const POST = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) => UrlMethod.post<T>(url, params, payload);
-export const PUT = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) => UrlMethod.put<T>(url, params, payload);
-export const PATCH = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) => UrlMethod.patch<T>(url, params, payload);
+export const POST = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) =>
+  UrlMethod.post<T>(url, params, payload);
+export const PUT = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) =>
+  UrlMethod.put<T>(url, params, payload);
+export const PATCH = <T = any>([url]: TemplateStringsArray) => (params?: Params, payload?: Params | string) =>
+  UrlMethod.patch<T>(url, params, payload);
 export const DELETE = <T = any>([url]: TemplateStringsArray) => (params?: Params) => UrlMethod.delete<T>(url, params);
 
 export default UrlMethod;

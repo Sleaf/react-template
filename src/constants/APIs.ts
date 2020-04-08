@@ -6,10 +6,9 @@
 /* Utils */
 import { GET } from '@/utils/request';
 
-
 /*
-* Example
-* */
+ * Example
+ * */
 export type TYPE_RETURN = {
   timestamp: Timestamp;
   status: number;

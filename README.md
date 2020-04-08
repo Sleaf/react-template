@@ -33,6 +33,11 @@ yarn test          # 运行测试用例
 - [@babel/preset-typescript](https://babeljs.io/docs/en/babel-preset-typescript): ⚡️快如闪电⚡️
 - [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin): 在编译阶段进行类型检查
 
+### 代码风格限制
+- **eslint** 及其相关系列插件，保证相关规则
+- **prettier** 辅助统一格式化代码风格
+- **git-cz+husky+commitLint+** 生成并检查符合规范的commit记录 
+
 ### Https自签支持（localhost）
 > - **警告**：工程内的证书秘钥等仅为调用特殊浏览器API提供测试开发，用于生产是**根本不安全**的。
 > - 需使用 `yarn dev-https` 以启用该功能。
@@ -59,10 +64,10 @@ yarn test          # 运行测试用例
 - **postcss**: 支持 grid 布局，相关现代CSS支持
 - **webpack-bundle-analyzer**: 使用`yarn analyze`分析生产包结构
 - **@welldone-software/why-did-you-render**: 将 react 组件渲染情况在控制台输出（在`src/index.tsx`中按需开启）
+- 推荐使用 `ncu` ([npm-check-updates](https://github.com/tjunnone/npm-check-updates)) 一键升级依赖，可修改根目录 `.ncurc.{json,yml,js}` 文件来配置升级选项
 - 各类实用工具
 
 ## 待添加的功能
 - 国际化方案支持
 - 多主题方案支持
-- ESLint + prettier 支持
 - create-react-app 支持

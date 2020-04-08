@@ -9,7 +9,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 // Configs
-const ENABLE_Analyze: boolean = args['analyze'];
+const ENABLE_ANALYZE: boolean = args['analyze'];
 
 module.exports = merge(common, {
   mode: 'production',
@@ -53,6 +53,6 @@ module.exports = merge(common, {
     // 移除 dist 目录
     new CleanWebpackPlugin(),
     // 图形化分析工具
-    ...(ENABLE_Analyze ? [new BundleAnalyzerPlugin()] : []),
+    ...(ENABLE_ANALYZE ? [new BundleAnalyzerPlugin()] : []),
   ],
 });

@@ -1,10 +1,13 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import _ from 'lodash';
 import { AnyFunc, safeFunc } from '../func';
 
 const useDirectState = <T>(initState: T, callback?: AnyFunc) => {
-  const [value, setValue] = useState<T>(initState);
-  const onChange = useCallback((value: T) => setValue(safeFunc(callback)(value)), []);
-  return { value, onChange };
+  const initStateRef = useRef(_.cloneDeep(initState));
+  const [value, setValue] = useState<T>(initStateRef.current);
+  const onChange: typeof setValue = useCallback(item => setValue(safeFunc(callback)(item)), [callback]);
+  const reset = useCallback(() => onChange(initStateRef.current), [onChange]);
+  return { value, onChange, reset };
 };
 
 export default useDirectState;
