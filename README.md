@@ -5,11 +5,17 @@
 ## 快速开始
 ```shell script
 yarn               # 安装依赖
+yarn cz            # 通过git-cz提交git commit
+ # > cz-lint       # 通过git-cz提交git commit之前格式化代码并检查lint
 yarn dev           # 开发模式
  # > dev-https     # 开发模式（启用https）
  # > dev-mock      # 开发模式（启用mock服务器）
 yarn build         # 打包生产
  # > analyze       # 打包生产（build之后打开包分析）
+yarn lint          # 检查各项lint
+ # > lint-eslint   # 单独检查eslint规则
+ # > lint-css      # 单独检查stylelint规则
+yarn format        # 格式化代码
 yarn doc-dev       # 打开文档编写界面 
 yarn test          # 运行测试用例
 ```
@@ -41,8 +47,8 @@ yarn test          # 运行测试用例
 ### Https自签支持（localhost）
 > - **警告**：工程内的证书秘钥等仅为调用特殊浏览器API提供测试开发，用于生产是**根本不安全**的。
 > - 需使用 `yarn dev-https` 以启用该功能。
-> - [ localCA.key ](https://github.com/Sleaf/react-template/blob/master/ssl/localCA.key)的 `pass phrase` 为 _sleaf1996_ ，证书内容均为个人相关字样
-> - [ localhost.csr ](https://github.com/Sleaf/react-template/blob/master/ssl/localhost.csr)的 `challenge password` 为 _sleaf1996_ ，证书内容均为个人相关字样
+> - [localCA.key](https://github.com/Sleaf/react-template/blob/master/ssl/localCA.key) 的 `pass phrase` 为 _sleaf1996_ ，证书内容均为个人相关字样
+> - [localhost.csr](https://github.com/Sleaf/react-template/blob/master/ssl/localhost.csr) 的 `challenge password` 为 _sleaf1996_ ，证书内容均为个人相关字样
 - [证书格式转换](https://vimsky.com/article/3608.html)
 - [在各环境中安装自签名证书](https://github.com/Sleaf/react-template/blob/master/docs/certificates.md)
 
