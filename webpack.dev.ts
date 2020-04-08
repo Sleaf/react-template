@@ -2,7 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import { resolve } from 'path';
 import merge from 'webpack-merge';
-import common, { __isWindows__ } from './webpack.common';
+import common, { __isWindows__, PUBLIC_PATH } from './webpack.common';
 import mockServer from './mockServer/index';
 
 const args = require('minimist')(process.argv);
@@ -23,6 +23,7 @@ export default merge(common, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   devServer: {
+    publicPath: PUBLIC_PATH,
     disableHostCheck: true,
     historyApiFallback: true,
     compress: true,

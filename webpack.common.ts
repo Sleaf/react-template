@@ -16,6 +16,7 @@ export const __isWindows__ = process.platform === 'win32';
 const __isDev__ = process.env.NODE_ENV === 'development';
 const __isPrd__ = process.env.NODE_ENV === 'production';
 const additionHash = __isPrd__ ? '.[hash]' : '';
+export const PUBLIC_PATH = '/';
 
 // css loader
 const toStyleLoader = (suffix: string | Array<string>, loaderPrefix, options?) => {
@@ -49,7 +50,7 @@ export default {
   },
   output: {
     path: resolve(__dirname, 'build'),
-    publicPath: '/',
+    publicPath: PUBLIC_PATH,
     filename: `resources/js/[name]${additionHash}.js`,
   },
   module: {
