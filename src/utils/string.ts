@@ -63,7 +63,11 @@ export const appendParams = (URL = window.location.origin, params: Params = {}) 
           return value != null;
       }
     })
-    .reduce((acc, [key, value], index) => `${acc + (index > 0 || acc.includes('?') ? '&' : '?')}${key}=${value}`, URL);
+    .reduce(
+      (acc, [key, value], index) =>
+        `${acc + (index > 0 || acc.includes('?') ? '&' : '?')}${key}=${encodeURIComponent(value)}`,
+      URL,
+    );
 
 /**
  * @example fillURL('user/:id/info',{id:123,aaa:1}) // return '/user/123/info'
@@ -86,12 +90,12 @@ export const pourIntoURL = (template = '', params: Params = {}, splitter = Split
 };
 
 /**
- * @example parseQuery('http:www.baidu.com/index?name=username&age=27&pwd=zbc|123@&likes=lol&likes=beautifull girl&$id=main#flag=66')
+ * @example parseQuery('http:www.baidu.com/index?name=username&age=27&pwd=zbc|123@&likes=lol&likes=beautiful girl&$id=main#flag=66')
  * // return
  * { name: 'username',
  *   age: '27',
  *   pwd: 'zbc|123@',
- *   likes: [ 'lol', 'beautifull girl' ],
+ *   likes: [ 'lol', 'beautiful girl' ],
  *   '$id': 'main'
  * }
  * */
