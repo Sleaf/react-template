@@ -1,7 +1,5 @@
 module.exports = {
-  extends: [
-    'stylelint-config-recommended',
-  ],
+  extends: ['stylelint-config-recommended'],
   rules: {
     // 覆盖 stylelint-config-standard 规则
     // `stylelint-config-standard`中的一些规则并不适用，这里进行了覆盖

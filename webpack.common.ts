@@ -70,7 +70,7 @@ export default {
         loader: 'url-loader',
         options: {
           limit: 1,
-          name: `resources/images/[hash].[ext]`,
+          name: 'resources/images/[hash].[ext]',
         },
       },
       {
@@ -81,7 +81,7 @@ export default {
           size: 16,
           hash: 'sha512',
           digest: 'hex',
-          name: `resources/fonts/[hash].[ext]`,
+          name: 'resources/fonts/[hash].[ext]',
         },
       },
     ],
@@ -120,11 +120,11 @@ export default {
     }),
     // parallel build
     new HappyPack({
-      //用id来标识 happypack处理那里类文件
+      // 用id来标识 happypack处理那里类文件
       id: 'happy-babel',
-      //如何处理  用法和loader 的配置一样
+      // 如何处理  用法和loader 的配置一样
       loaders: ['babel-loader?cacheDirectory=true'],
-      //共享进程池
+      // 共享进程池
       threads: os.cpus().length * 2,
     }),
     // typescript type check
@@ -133,7 +133,7 @@ export default {
     new WebpackDeepScopeAnalysisPlugin(),
   ],
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.tsx', '.ts', '.mjs', '.js', '.jsx', '.json'],
     alias: {
       '@': resolve(__dirname, './src'),
     },

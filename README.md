@@ -1,6 +1,6 @@
 # React Template
 > - 自用 React 模板， 推荐使用 [yarn](https://yarnpkg.com) 进行包管理，如果要使用 `npm` ，请替换 `package.json` 中相关字段。
-> - 默认不支持 IE ，如有需要请自行安装配置 [polyfill](https://babeljs.io/docs/en/babel-polyfill) / shim / sham
+> - 默认不做[回退方案](#回退方案)
 
 ## 快速开始
 ```shell script
@@ -64,6 +64,12 @@ yarn test          # 运行测试用例
   > - `./help` 为帮助文档（**对外**）
 - 支持 [markdown](https://www.markdown.cn/) 语法。
 
+### 回退方案
+> 如有需要请自行安装配置 [polyfill](https://babeljs.io/docs/en/babel-polyfill) / shim / sham
+
+以下默认引用的第三方库为es2015语法，请在webpack中添加转换：
+- react-hanger
+
 ### 其他
 - **多预编译器支持**: webpack配置默认支持 `less`/`sass`/`stylus`
     > - 默认安装less相关依赖，如需使用其他预编译器请安装对应相关依赖。
@@ -74,6 +80,6 @@ yarn test          # 运行测试用例
 - 各类实用工具
 
 ## 待添加的功能
-- 国际化方案支持
-- 多主题方案支持
-- create-react-app 支持
+- [ ] 国际化方案支持
+- [ ] 多主题方案支持
+- [ ] create-react-app 支持
