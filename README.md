@@ -1,5 +1,5 @@
 # React Template
-> - 自用 React 模板， 推荐使用 [yarn](https://yarnpkg.com) 进行包管理，如果要使用 `npm` ，请替换 `package.json` 中相关字段。
+> - 自用 React 模板， 推荐使用 [`yarn`](https://yarnpkg.com) 进行包管理，如果要使用 `npm` ，请替换 `package.json` 中相关字段。
 > - 默认不做[回退方案](#回退方案)
 
 ## 快速开始
@@ -42,7 +42,7 @@ yarn test          # 运行测试用例
 ### 代码风格限制
 - **eslint** 及其相关系列插件，保证相关规则
 - **prettier** 辅助统一格式化代码风格
-- **git-cz+husky+commitLint+** 生成并检查符合规范的commit记录 
+- **git-cz + husky + commitLint** 生成并检查符合规范的commit记录 
 
 ### Https自签支持（localhost）
 > - **警告**：工程内的证书秘钥等仅为调用特殊浏览器API提供测试开发，用于生产是**根本不安全**的。
