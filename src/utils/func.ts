@@ -32,4 +32,7 @@ export const safeFunc = <T extends AnyFunc>(func: Nullable<T>) => (func && _.isF
  * 如果传入对应类型，则传出（）=> T
  * 如果传入工厂方法，则直接传出
  * */
-export const factoryCall = <T>(param: AnyFunc<T> | T) => (_.isFunction(param) ? param : () => param) as AnyFunc<T>;
+type ParamType<T> = T extends (...args: infer P) => any ? P : any;
+type ReturnType<T> = T extends (...args: any) => infer R ? R : T;
+type ReturnFunc<T> = (...arg: ParamType<T>) => ReturnType<T>;
+export const factoryCall = <T>(param: T): ReturnFunc<T> => (_.isFunction(param) ? param : () => param as ReturnType<T>);
