@@ -9,6 +9,7 @@
     "cz-lint": "run-s format lint cz",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.dev.ts --colors --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --colors",
+    "deploy":"run-s lint test build",
     "dev-https": "yarn dev --https",
     "dev-mock": "yarn dev --mock",
     "doc-dev": "docsify serve docs/develop -o -p 3202",
