@@ -6,9 +6,7 @@ import { HttpStatus } from '@/constants/enums';
 const requestPool: Record<string, CancelTokenSource> = {};
 
 export const request = axiosFactory.create({
-  headers: {
-    'Content-type': 'application/json',
-  },
+  withCredentials: true,
 });
 
 request.interceptors.request.use(config => {
@@ -22,7 +20,11 @@ request.interceptors.request.use(config => {
   config.cancelToken = source.token;
   // 序列化JS对象
   const sendPayload = config.data;
-  if (sendPayload && typeof sendPayload === 'object') {
+  if (sendPayload && !config.headers['Content-Type'] && typeof sendPayload === 'object') {
+    config.headers = {
+      ...config.headers,
+      'Content-Type': 'application/json',
+    };
     config.data = JSON.stringify(sendPayload);
   }
   return config;
