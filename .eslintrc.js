@@ -7,25 +7,20 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    node: true,
   },
-  parser: '@typescript-eslint/parser',
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
     project: './tsconfig.json',
-    tsconfigRootDir: __dirname,
+    sourceType: 'module',
   },
   extends: [
     'airbnb-typescript',
-    'prettier/react',
     'plugin:@typescript-eslint/recommended',
+    'prettier/react',
     'plugin:prettier/recommended',
   ],
-  plugins: [
-    'import',
-    '@typescript-eslint',
-    'react',
-    'react-hooks',
-    'unused-imports',
-  ],
+  plugins: ['import', '@typescript-eslint', 'react', 'react-hooks', 'unused-imports'],
   rules: {
     'arrow-parens': [ERROR, 'as-needed'],
     'class-methods-use-this': WARNING,
@@ -68,14 +63,15 @@ module.exports = {
     'unused-imports/no-unused-imports-ts': WARNING,
     'unused-imports/no-unused-vars-ts': OFF,
     // typescript
-    '@typescript-eslint/ban-ts-ignore': WARNING,
-    '@typescript-eslint/camelcase': WARNING,
+    '@typescript-eslint/dot-notation': OFF,
     '@typescript-eslint/explicit-function-return-type': OFF,
     '@typescript-eslint/indent': OFF,
     '@typescript-eslint/no-explicit-any': OFF,
     '@typescript-eslint/no-unused-expressions': [ERROR, { allowShortCircuit: true }],
     '@typescript-eslint/no-unused-vars': OFF, // 声明但是未引用
     '@typescript-eslint/no-var-requires': OFF, // 禁止使用require
+    '@typescript-eslint/explicit-module-boundary-types': OFF,
+    // a11y
     'jsx-a11y/anchor-is-valid': OFF,
     'jsx-a11y/click-events-have-key-events': OFF,
     'jsx-a11y/control-has-associated-label': OFF,

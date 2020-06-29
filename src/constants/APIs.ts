@@ -9,8 +9,8 @@ import { GET } from '@/utils/request';
 /*
  * Example
  * */
-export type TYPE_RETURN = {
+export type TypeReturn = {
   timestamp: Timestamp;
   status: number;
 };
-export const API_EXAMPLE = () => GET<TYPE_RETURN>`/api`();
+export const API_EXAMPLE = () => GET<TypeReturn>`/api`();

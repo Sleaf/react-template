@@ -12,7 +12,7 @@ export function removeClass<T extends Nullable<HTMLElement>>(el: T, className: s
   return el;
 }
 
-export const setTagTitle = (titleName: string) => (document.title = titleName);
+export const setTagTitle = (titleName: string): string => (document.title = titleName);
 
 export const isIE = (() => {
   const cachedResult = {};

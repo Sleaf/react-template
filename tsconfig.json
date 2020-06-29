@@ -1,24 +1,24 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "target": "es6",
-    "module": "commonjs",
     "allowJs": true,
-    "pretty": false,
-    "resolveJsonModule": true,
-    "jsx": "react",
-    "sourceMap": true,
-    "outDir": "./build_src",
-    "strict": true,
-    "noImplicitAny": false,
     "alwaysStrict": true,
     "baseUrl": ".",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "outDir": "./build_src",
     "paths": {
       "@/*": [
         "src/*"
       ]
     },
-    "esModuleInterop": true,
+    "pretty": false,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
     /* Experimental Options */
     "experimentalDecorators": true
   },
@@ -26,7 +26,6 @@
     "node_modules"
   ],
   "include": [
-    "./*.js",
     "./*.ts",
     "./src/**/*.js",
     "./src/**/*.ts",

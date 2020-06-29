@@ -39,7 +39,15 @@ const toStyleLoader = (suffix: string | Array<string>, loaderPrefix, options?) =
 };
 const styleSupportList = [
   { suffix: ['css'], loaderPrefix: 'css' },
-  { suffix: ['less'], loaderPrefix: 'less', options: { javascriptEnabled: true } },
+  {
+    suffix: ['less'],
+    loaderPrefix: 'less',
+    options: {
+      lessOptions: {
+        javascriptEnabled: true,
+      },
+    },
+  },
   { suffix: ['sass', 'scss'], loaderPrefix: 'sass' },
   { suffix: ['styl'], loaderPrefix: 'stylus' },
 ];
@@ -88,7 +96,9 @@ export default {
   },
   plugins: [
     // 复制静态资源
-    new CopyWebpackPlugin([{ from: 'public', to: 'resources', toType: 'dir' }]),
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'public', to: 'resources', toType: 'dir' }],
+    }),
     // 全局变量定义
     new webpack.DefinePlugin({
       isPrd: JSON.stringify(isPrd),

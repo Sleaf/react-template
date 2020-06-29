@@ -16,7 +16,7 @@ const ENABLE_MOCK_SERVER: boolean = args['mock'];
 const exportPort = Number(process.env.PORT) || 3000;
 const ips = os.networkInterfaces();
 const availableIpv4 = Object.values(ips)
-  .map(item => item.filter(addr => addr.family === 'IPv4' && !addr.internal)) // 只输出外网地址
+  .map(item => item!.filter(addr => addr.family === 'IPv4' && !addr.internal)) // 只输出外网地址
   .reduce((acc, item) => acc.concat(item), [])
   .map(item => item.address);
 

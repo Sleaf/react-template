@@ -25,7 +25,7 @@ export const compose = (funArr: Array<AnyFunc> = []) => (...runtimeParams: Array
  * 传入可能为不可call
  * 返回安全的函数，
  * */
-export const safeFunc = <T extends AnyFunc>(func: Nullable<T>) => (func && _.isFunction(func) ? func : doNothing);
+export const safeFunc = <T extends AnyFunc>(func: Nullable<T>): T => (_.isFunction(func) ? func : (doNothing as T));
 
 /*
  * 安全调用可能为工厂函数的参数
