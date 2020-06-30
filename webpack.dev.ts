@@ -36,7 +36,7 @@ const devServer = {
   },
   before: ENABLE_MOCK_SERVER ? mockServer : undefined,
   proxy: {
-    '/api': {
+    [`${PUBLIC_PATH}api`]: {
       target: 'http://localhost',
       secure: false,
       changeOrigin: true,

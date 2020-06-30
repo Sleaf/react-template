@@ -1,13 +1,12 @@
 import axiosFactory, { CancelTokenSource } from 'axios';
 import _ from 'lodash';
+import { PUBLIC_PATH } from 'webpack.common';
 import { pourIntoURL } from '@/utils/string';
 import { HttpStatus } from '@/constants/enums';
 
 const requestPool: Record<string, CancelTokenSource> = {};
 
-export const request = axiosFactory.create({
-  withCredentials: true,
-});
+export const request = axiosFactory.create({ baseURL: PUBLIC_PATH, withCredentials: true });
 
 request.interceptors.request.use(config => {
   // 防止重复发送
@@ -40,7 +39,7 @@ request.interceptors.response.use(
         return Promise.reject(err);
       case HttpStatus.InternalServerError:
       default:
-        errorMsg && console.error(`Error: ${errorMsg}`, 0);
+        errorMsg && console.error(`Error: ${errorMsg}`, errorStatus);
         return Promise.reject(err);
     }
   },
