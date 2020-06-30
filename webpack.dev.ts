@@ -3,7 +3,7 @@ import os from 'os';
 import { resolve } from 'path';
 import merge from 'webpack-merge';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
-import common, { isWindows, PUBLIC_PATH } from './webpack.common';
+import common, { BUILD_RESOURCE_NAME, isWindows, PUBLIC_PATH } from './webpack.common';
 import mockServer from './mockServer/index';
 
 const args = require('minimist')(process.argv);
@@ -23,7 +23,7 @@ const availableIpv4 = Object.values(ips)
 const devServer = {
   disableHostCheck: true,
   historyApiFallback: {
-    rewrites: [{ from: new RegExp(`^${PUBLIC_PATH}(?!resources)`), to: PUBLIC_PATH }],
+    rewrites: [{ from: new RegExp(`^${PUBLIC_PATH}(?!${BUILD_RESOURCE_NAME})`), to: PUBLIC_PATH }],
   },
   compress: true,
   quiet: true,

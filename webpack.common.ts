@@ -16,7 +16,10 @@ export const isWindows = process.platform === 'win32';
 const isDev = process.env.NODE_ENV === 'development';
 const isPrd = process.env.NODE_ENV === 'production';
 const additionHash = isPrd ? '.[hash]' : '';
+
+// config
 export const PUBLIC_PATH = '/';
+export const BUILD_RESOURCE_NAME = 'resources';
 
 // css loader
 const toStyleLoader = (suffix: string | Array<string>, loaderPrefix, options?) => {
@@ -59,7 +62,7 @@ export default {
   output: {
     path: resolve(__dirname, 'build'),
     publicPath: PUBLIC_PATH,
-    filename: `resources/js/[name]${additionHash}.js`,
+    filename: `${BUILD_RESOURCE_NAME}/js/[name]${additionHash}.js`,
   },
   module: {
     rules: [
@@ -78,7 +81,7 @@ export default {
         loader: 'url-loader',
         options: {
           limit: 1,
-          name: 'resources/images/[hash].[ext]',
+          name: `${BUILD_RESOURCE_NAME}/images/[hash].[ext]`,
         },
       },
       {
@@ -89,7 +92,7 @@ export default {
           size: 16,
           hash: 'sha512',
           digest: 'hex',
-          name: 'resources/fonts/[hash].[ext]',
+          name: `${BUILD_RESOURCE_NAME}/fonts/[hash].[ext]`,
         },
       },
     ],
@@ -97,7 +100,7 @@ export default {
   plugins: [
     // 复制静态资源
     new CopyWebpackPlugin({
-      patterns: [{ from: 'public', to: 'resources', toType: 'dir' }],
+      patterns: [{ from: 'public', to: BUILD_RESOURCE_NAME, toType: 'dir' }],
     }),
     // 全局变量定义
     new webpack.DefinePlugin({
@@ -107,8 +110,8 @@ export default {
     }),
     // 提取css
     new MiniCssExtractPlugin({
-      filename: `resources/css/style${additionHash}.css`,
-      chunkFilename: `resources/css/[id]${additionHash}.css`,
+      filename: `${BUILD_RESOURCE_NAME}/css/style${additionHash}.css`,
+      chunkFilename: `${BUILD_RESOURCE_NAME}/css/[id]${additionHash}.css`,
     }),
     // 确保 vendors 的 chunkhash 只随内容变化
     // @see https://webpack.js.org/guides/caching/#module-identifiers
