@@ -21,9 +21,10 @@ const availableIpv4 = Object.values(ips)
   .map(item => item.address);
 
 const devServer = {
-  publicPath: PUBLIC_PATH,
   disableHostCheck: true,
-  historyApiFallback: true,
+  historyApiFallback: {
+    rewrites: [{ from: new RegExp(`^${PUBLIC_PATH}(?!resources)`), to: PUBLIC_PATH }],
+  },
   compress: true,
   quiet: true,
   overlay: true,
@@ -50,7 +51,9 @@ export default merge(common, {
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: [`Web is running here: http${ENABLE_SSL ? 's' : ''}://${devServer.host}:${devServer.port}`],
+        messages: [
+          `Server is running: http${ENABLE_SSL ? 's' : ''}://${devServer.host}:${devServer.port}${PUBLIC_PATH}`,
+        ],
       },
       clearConsole: true,
     }),
