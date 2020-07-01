@@ -2,6 +2,7 @@ import fs from 'fs';
 import os from 'os';
 import { resolve } from 'path';
 import merge from 'webpack-merge';
+import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 import FriendlyErrorsWebpackPlugin from 'friendly-errors-webpack-plugin';
 import common, { BUILD_RESOURCE_NAME, isWindows, PUBLIC_PATH } from './webpack.common';
 import mockServer from './mockServer/index';
@@ -49,6 +50,7 @@ export default merge(common, {
   devtool: 'cheap-module-eval-source-map',
   devServer,
   plugins: [
+    new HardSourceWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
         messages: [

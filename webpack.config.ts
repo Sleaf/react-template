@@ -1,4 +1,5 @@
 import merge from 'webpack-merge';
+import SpeedMeasurePlugin from 'speed-measure-webpack-plugin';
 import common from './webpack.common';
 
 // Plugins
@@ -11,7 +12,11 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // Configs
 const ENABLE_ANALYZE: boolean = args['analyze'];
 
-module.exports = merge(common, {
+const smp = new SpeedMeasurePlugin({
+  disable: !ENABLE_ANALYZE,
+});
+
+const prdConfig = merge(common, {
   mode: 'production',
   devtool: 'cheap-module-source-map',
   optimization: {
@@ -56,3 +61,5 @@ module.exports = merge(common, {
     ...(ENABLE_ANALYZE ? [new BundleAnalyzerPlugin()] : []),
   ],
 });
+
+module.exports = smp.wrap(prdConfig);

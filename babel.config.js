@@ -1,10 +1,15 @@
-const isTest = process.env.NODE_ENV === 'test';
-const envConfig = {
-  modules: isTest && 'auto',
-};
-
 module.exports = {
-  presets: [['@babel/preset-env', envConfig], '@babel/preset-typescript', '@babel/preset-react'],
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage',
+        corejs: { version: 3, proposals: true }
+      },
+    ],
+    '@babel/preset-typescript',
+    '@babel/preset-react',
+  ],
   plugins: [
     // prepare
     '@babel/plugin-transform-runtime',

@@ -1,7 +1,5 @@
 import { resolve } from 'path';
 import webpack from 'webpack';
-import os from 'os';
-import HappyPack from 'happypack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import pkg from './package.json';
 
@@ -9,15 +7,14 @@ import pkg from './package.json';
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 
 // env
 export const isWindows = process.platform === 'win32';
 const isDev = process.env.NODE_ENV === 'development';
 const isPrd = process.env.NODE_ENV === 'production';
-const additionHash = isPrd ? '.[hash]' : '';
 
 // config
+const additionHash = isPrd ? '.[hash]' : '';
 export const PUBLIC_PATH = '/';
 export const BUILD_RESOURCE_NAME = 'resources';
 
@@ -68,12 +65,8 @@ export default {
     rules: [
       {
         test: /\.[jt]sx?$/,
-        exclude: /node_modules/,
         include: resolve(__dirname, 'src'),
-        // This is a feature of `babel-loader` for webpack (not Babel itself).
-        // It enables caching results in ./node_modules/.cache/babel-loader/
-        // directory for faster rebuilds.
-        loader: 'happypack/loader?id=happy-babel',
+        use: ['thread-loader', 'babel-loader?cacheDirectory=true'],
       },
       ...styleSupportList.map(({ suffix, loaderPrefix, options }) => toStyleLoader(suffix, loaderPrefix, options)),
       {
@@ -131,19 +124,8 @@ export default {
         minifyJS: true,
       },
     }),
-    // parallel build
-    new HappyPack({
-      // 用id来标识 happypack处理那里类文件
-      id: 'happy-babel',
-      // 如何处理  用法和loader 的配置一样
-      loaders: ['babel-loader?cacheDirectory=true'],
-      // 共享进程池
-      threads: os.cpus().length * 2,
-    }),
     // typescript type check
     new ForkTsCheckerWebpackPlugin(),
-    // tree shaking
-    new WebpackDeepScopeAnalysisPlugin(),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.mjs', '.js', '.jsx', '.json'],
