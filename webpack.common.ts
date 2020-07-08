@@ -27,18 +27,23 @@ const toStyleLoader = (suffix: string | Array<string>, loaderPrefix, options?) =
       { loader: MiniCssExtractPlugin.loader, options: { hmr: isDev } },
       'css-loader',
       'postcss-loader',
-      {
-        loader: `${loaderPrefix}-loader`,
-        options: {
-          sourceMap: isDev,
-          ...options,
-        },
-      },
+      ...(loaderPrefix
+        ? [
+            {
+              loader: `${loaderPrefix}-loader`,
+              options: {
+                sourceMap: isDev,
+                ...options,
+              },
+            },
+          ]
+        : []),
     ],
   };
 };
+
 const styleSupportList = [
-  { suffix: ['css'], loaderPrefix: 'css' },
+  { suffix: ['css'] },
   {
     suffix: ['less'],
     loaderPrefix: 'less',
