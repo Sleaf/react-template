@@ -30,7 +30,7 @@ request.interceptors.request.use(config => {
 });
 
 request.interceptors.response.use(
-  response => response.data,
+  response => response,
   err => {
     const errorMsg = _.get(err.response, 'data.message');
     const errorStatus = _.get(err.response, 'status');
@@ -50,15 +50,15 @@ request.interceptors.response.use(
  * */
 const UrlMethod = {
   get: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> =>
-    request.get(dealParamsWith(baseURL, params)),
+    request.get(dealParamsWith(baseURL, params)).then(res => res.data),
   post: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> =>
-    request.post(dealParamsWith(baseURL, params), payload),
+    request.post(dealParamsWith(baseURL, params), payload).then(res => res.data),
   put: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> =>
-    request.put(dealParamsWith(baseURL, params), payload),
+    request.put(dealParamsWith(baseURL, params), payload).then(res => res.data),
   patch: <T>(baseURL = '', params?: Params, payload?: Params | string, dealParamsWith = pourIntoURL): Promise<T> =>
-    request.patch(dealParamsWith(baseURL, params), payload),
+    request.patch(dealParamsWith(baseURL, params), payload).then(res => res.data),
   delete: <T>(baseURL = '', params?: Params, dealParamsWith = pourIntoURL): Promise<T> =>
-    request.delete(dealParamsWith(baseURL, params)),
+    request.delete(dealParamsWith(baseURL, params)).then(res => res.data),
 };
 
 /*
