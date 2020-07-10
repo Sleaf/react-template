@@ -6,11 +6,13 @@ import { removeClass, removeElement, setTagTitle } from '@/utils/domLib';
 import pkg from '../package.json';
 import '@/styles/index.less';
 
+if ((module as any).hot) (module as any).hot.accept();
+
 // debug
 if (isDev) {
-  // //why-did-you-render
+  // // why-did-you-render
   // const whyDidYouRender = require('@welldone-software/why-did-you-render');
-  // whyDidYouRender(React, { include: [/^./] }); // rewrite you want here
+  // whyDidYouRender(React, { include: [/^./], collapseGroups: true }); // rewrite you want here
 }
 
 // page onLoaded

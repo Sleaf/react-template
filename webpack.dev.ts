@@ -25,6 +25,7 @@ const devServer = {
   historyApiFallback: {
     rewrites: [{ from: new RegExp(`^${PUBLIC_PATH}(?!${BUILD_RESOURCE_NAME})`), to: PUBLIC_PATH }],
   },
+  hot: true,
   compress: true,
   quiet: true,
   overlay: true,
