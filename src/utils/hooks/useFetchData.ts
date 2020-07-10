@@ -31,15 +31,13 @@ const useFetchData = <F extends PromiseFunc>(
         return null;
       }
       let resetTimer;
-      const handlerReset = () => {
-        setValue(cachedDefaultValue.current);
-        setFetching(true);
-      };
-      if (!cache && resetDelay > 0) {
+      const handlerReset = () => setValue(cachedDefaultValue.current);
+      if (resetDelay > 0) {
         resetTimer = setTimeout(handlerReset, resetDelay);
-      } else {
+      } else if (!cache) {
         handlerReset();
       }
+      setFetching(true);
       setTriggered(true);
       try {
         const result = await fetchFunc(...payloads);
@@ -57,7 +55,7 @@ const useFetchData = <F extends PromiseFunc>(
       }
       return null;
     },
-    [fetchFunc, cache, resetDelay, setFetching, setTriggered],
+    [cache, fetchFunc, resetDelay, setFetching, setTriggered],
   );
   const dryFetchData = useCallback(async () => {
     !cache && setValue(cachedDefaultValue.current);
