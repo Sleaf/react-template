@@ -13,7 +13,7 @@ const useHashState = <T extends Nullable<string>>(defaultState?: T, range?: Arra
     } else {
       window.location.hash = (value || '') as string;
     }
-  }, [changeState, defaultState, range?.includes, value]);
+  }, [changeState, defaultState, range, value]);
   const onChange = useCallback(
     nextValue => {
       window.location.hash = nextValue;
