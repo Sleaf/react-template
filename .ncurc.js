@@ -1,3 +1,5 @@
 module.exports = {
-  reject: [],
+  reject: [
+    'webpack-merge'
+  ],
 };

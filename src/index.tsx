@@ -6,7 +6,7 @@ import { removeClass, removeElement, setTagTitle } from '@/utils/domLib';
 import pkg from '../package.json';
 import '@/styles/index.less';
 
-if ((module as any).hot) (module as any).hot.accept();
+(module as any).hot?.accept();
 
 // debug
 if (isDev) {

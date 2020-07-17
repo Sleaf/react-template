@@ -2,6 +2,7 @@
 // ...
 
 // global define, see `DefinePlugin`
+declare const PUBLIC_PATH: string; // 是否为prd
 declare const isPrd: boolean; // 是否为prd
 declare const isDev: boolean; // 是否为dev
 declare const isWindows: boolean; // 是否为windows

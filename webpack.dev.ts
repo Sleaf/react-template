@@ -29,7 +29,7 @@ const devServer = {
   compress: true,
   quiet: true,
   overlay: true,
-  host: ENABLE_SSL ? 'localhost' : availableIpv4[0] || (isWindows ? '127.0.0.1' : '0.0.0.0'),
+  host: ENABLE_SSL ? 'localhost' : isWindows ? availableIpv4[0] || '127.0.0.1' : '0.0.0.0',
   port: exportPort,
   https: ENABLE_SSL && {
     key: fs.readFileSync(resolve(__dirname, 'ssl/ssl.localhost.key')),
@@ -53,7 +53,7 @@ export default merge(common, {
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
         messages: [
-          `Server is running: http${ENABLE_SSL ? 's' : ''}://${devServer.host}:${devServer.port}${PUBLIC_PATH}`,
+          `Server is running: http${ENABLE_SSL ? 's' : ''}://${availableIpv4[0]}:${devServer.port}${PUBLIC_PATH}`,
         ],
       },
       clearConsole: true,
