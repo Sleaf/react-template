@@ -102,6 +102,7 @@ export default {
     }),
     // 全局变量定义
     new webpack.DefinePlugin({
+      PUBLIC_PATH: JSON.stringify(PUBLIC_PATH),
       isPrd: JSON.stringify(isPrd),
       isDev: JSON.stringify(isDev),
       isWindows: JSON.stringify(process.platform === 'win32'),
