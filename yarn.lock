@@ -3708,6 +3708,11 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
+case-sensitive-paths-webpack-plugin@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npm.taobao.org/case-sensitive-paths-webpack-plugin/download/case-sensitive-paths-webpack-plugin-2.3.0.tgz#23ac613cc9a856e4f88ff8bb73bbb5e989825cf7"
+  integrity sha1-I6xhPMmoVuT4j/i7c7u16YmCXPc=
+
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://npm.hypers.cc/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
