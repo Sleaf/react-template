@@ -120,10 +120,10 @@ export default {
       title: 'Loading...',
       version: `${pkg.version}`,
       publishDate: new Date().toLocaleString(),
-      filename: 'index.html',
       favicon: 'src/assets/favicon.ico',
       template: 'src/index.html',
-      inject: true,
+      inject: 'head',
+      scriptLoading: 'defer',
       minify: {
         collapseInlineTagWhitespace: true,
         collapseWhitespace: true,
