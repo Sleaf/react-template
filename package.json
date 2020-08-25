@@ -15,7 +15,7 @@
     "analyze": "yarn build --analyze",
     "lint": "yarn && run-p lint-*",
     "lint-eslint": "eslint './src/**/*.{ts,tsx}'",
-    "lint-css": "stylelint './src/**/*.less'",
+    "lint-style": "stylelint './src/**/*.{css,less}'",
     "test": "cross-env NODE_ENV=test jest",
     "format": "prettier --write 'src/**/*.{ts,tsx}'"
   },
@@ -122,11 +122,6 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
-  },
-  "config": {
-    "commitizen": {
-      "path": "git-cz"
-    }
   },
   "husky": {
     "hooks": {
