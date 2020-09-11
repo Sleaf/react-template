@@ -11,11 +11,9 @@ request.interceptors.request.use(config => {
   // 防止重复发送
   const sendPath = config.url || '';
   // const sendPath = sendURL.includes('?') ? getRegxOrder(sendURL, /.+?(?=\?)/, 0) : sendURL;
-  let source = requestPool[sendPath];
-  source && source.cancel();
-  source = axiosFactory.CancelToken.source();
-  requestPool[sendPath] = source;
-  config.cancelToken = source.token;
+  requestPool[sendPath]?.cancel();
+  requestPool[sendPath] = axiosFactory.CancelToken.source();
+  config.cancelToken = requestPool[sendPath].token;
   // 序列化JS对象
   const sendPayload = config.data;
   if (sendPayload && !config.headers['Content-Type'] && typeof sendPayload === 'object') {

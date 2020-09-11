@@ -44,12 +44,10 @@ const useFetchData = <F extends PromiseFunc>(
         clearTimeout(resetTimer);
         if (componentAlive.current) {
           setValue(result);
-          setFetching(false);
-          return result;
         }
-      } catch (e) {
-        // eslint-disable-next-line no-underscore-dangle
-        if (componentAlive.current && !e.__CANCEL__) {
+        return result;
+      } finally {
+        if (componentAlive.current) {
           setFetching(false);
         }
       }
