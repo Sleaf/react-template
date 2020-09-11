@@ -16,7 +16,7 @@ module.exports = {
     // 禁止 at 规则（ @keyframes ）使用浏览器引擎前缀
     'at-rule-no-vendor-prefix': true,
     // 指定一个在声明中允许使用的属性和单位的白名单
-    'declaration-property-unit-whitelist': {
+    'declaration-property-unit-allowed-list': {
       'font-size': ['px', 'em', '%'],
       '/^animation/': ['s'],
     },
@@ -43,7 +43,7 @@ module.exports = {
     'selector-no-vendor-prefix': true,
     // 指定一个允许使用的伪类选择器的白名单(仅可使用 IE9+ 浏览器支持的伪类)
     // [CSS选择器的浏览器支持]{@link https://labs.qianduan.net/css-selector/}
-    'selector-pseudo-class-whitelist': [
+    'selector-pseudo-class-allowed-list': [
       // CSS 1
       'active',
       'link',

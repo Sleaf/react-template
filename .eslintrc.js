@@ -85,6 +85,7 @@ module.exports = {
     'react/jsx-props-no-spreading': OFF,
     'react/no-array-index-key': WARNING,
     'react/no-find-dom-node': OFF,
+    'react/require-default-props': OFF,
     'react/state-in-constructor': OFF,
     'react/static-property-placement': OFF,
   },
