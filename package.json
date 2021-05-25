@@ -70,7 +70,7 @@
     "@welldone-software/why-did-you-render": "^4.2.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-lodash": "^3.3.4",
-    "browserslist": "^4.14.2",
+    "browserslist": "^4.16.5",
     "cache-loader": "^4.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "clean-webpack-plugin": "^3.0.0",
